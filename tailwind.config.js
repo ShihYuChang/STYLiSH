@@ -7,7 +7,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      width: { 258: '258px', 450: '450px' },
+      width: { 258: '258px', 450: '450px', 44: '44px' },
       height: {
         100: '100px',
         40: '40px',
@@ -30,6 +30,7 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        logo: "url('./img/logo.svg')",
       },
     },
   },

@@ -20,7 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={noto_sans.className}>{children}</body>
+      <body className={`${noto_sans.className} text-custom-grey`}>
+        {children}
+      </body>
     </html>
   );
 }

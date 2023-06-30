@@ -1,4 +1,6 @@
 import React from 'react';
+import { BsCart3 } from 'react-icons/bs';
+import { CgProfile } from 'react-icons/cg';
 
 interface Category {
   label: '女裝' | '男裝' | '配件';
@@ -36,11 +38,18 @@ export default function Header() {
             <input className='w-full h-[24px] outline-none text-[20px] text-custom-brown' />
             <div className='h-full w-[44px] shrink-0 bg-searchIcon'></div>
           </div>
-          <div className='w-[44px] bg-slate-400'></div>
-          <div className='w-[44px] bg-slate-400'></div>
+          <div className='w-[44px] text-[44px] text-icon-brown hover:text-icon-hover-brown cursor-pointer relative'>
+            <BsCart3 />
+            <div className='w-[35px] h-[35px] bg-cart-qty-brown rounded-[50%] text-white text-[16px] flex items-center justify-center absolute bottom-[-5px] right-[-10px]'>
+              1
+            </div>
+          </div>
+          <div className='w-[44px] text-[44px] text-icon-brown hover:text-icon-hover-brown cursor-pointer'>
+            <CgProfile />
+          </div>
         </div>
       </div>
-      <div className='h-[40px] bg-custom-gray'></div>
+      <div className='h-[40px] bg-custom-grey'></div>
     </div>
   );
 }

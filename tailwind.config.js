@@ -8,8 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-gray': '#313538',
+        'custom-grey': '#313538',
         'custom-brown': '#8b572a',
+        'icon-brown': '#4c4747',
+        'icon-hover-brown': '#9E724D',
+        'cart-qty-brown': '#8b572a',
       },
 
       backgroundImage: {
@@ -18,6 +21,7 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         logo: "url('./img/logo.svg')",
         searchIcon: "url('./img/icons/search.svg')",
+        profileIcon: "url('./img/icons/profile.svg')",
       },
     },
   },

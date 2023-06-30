@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Text() {
   return (
-    <div className='absolute left-[407px] top-[166px]'>
+    <div className='absolute left-[22vw] top-[166px]'>
       <div className='text-[30px] leading-[57px] text-[#070707]'>
         於是
         <br />

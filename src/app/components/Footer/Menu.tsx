@@ -22,7 +22,7 @@ export default function Menu() {
           className={`w-[134px] flex justify-center items-center leading-[22px] ${
             index === categories.length - 1
               ? null
-              : 'border-r border-solid border-border-grey'
+              : 'border-r border-solid border-footer-grey'
           } cursor-pointer`}
         >
           {category.label}

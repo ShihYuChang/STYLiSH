@@ -13,6 +13,8 @@ module.exports = {
         'icon-brown': '#4c4747',
         'icon-hover-brown': '#9E724D',
         'cart-qty-brown': '#8b572a',
+        'footer-text-white': '#f5f5f5',
+        'border-grey': '#828282',
       },
 
       backgroundImage: {

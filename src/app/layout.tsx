@@ -1,5 +1,7 @@
 import './globals.css';
 import { Inter, Noto_Sans_TC } from 'next/font/google';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const noto_sans = Noto_Sans_TC({
   weight: ['400', '700'],
@@ -21,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${noto_sans.className} text-custom-grey`}>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

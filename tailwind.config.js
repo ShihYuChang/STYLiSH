@@ -20,8 +20,6 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         logo: "url('./img/logo.svg')",
-        searchIcon: "url('./img/icons/search.svg')",
-        profileIcon: "url('./img/icons/profile.svg')",
       },
     },
   },

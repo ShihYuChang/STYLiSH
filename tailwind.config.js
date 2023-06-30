@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         'custom-gray': '#313538',
+        'custom-brown': '#8b572a',
       },
 
       backgroundImage: {
@@ -16,6 +17,7 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         logo: "url('./img/logo.svg')",
+        searchIcon: "url('./img/icons/search.svg')",
       },
     },
   },

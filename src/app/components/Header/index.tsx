@@ -32,12 +32,15 @@ export default function Header() {
           ))}
         </div>
         <div className='flex h-full gap-[42px]'>
-          <div className='w-[214px] bg-slate-400'></div>
+          <div className='w-[214px] h-[44px] flex items-center border border-solid border-custom-grey rounded-[20px] pl-[20px] pr-[10px]'>
+            <input className='w-full h-[24px] outline-none text-[20px] text-custom-brown' />
+            <div className='h-full w-[44px] shrink-0 bg-searchIcon'></div>
+          </div>
           <div className='w-[44px] bg-slate-400'></div>
           <div className='w-[44px] bg-slate-400'></div>
         </div>
       </div>
-      <div className='h-[40px] bg-custom-gray'>d</div>
+      <div className='h-[40px] bg-custom-gray'></div>
     </div>
   );
 }

@@ -1,6 +1,11 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Inter, Noto_Sans_TC } from 'next/font/google';
 
+const noto_sans = Noto_Sans_TC({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
@@ -15,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <body className={noto_sans.className}>{children}</body>
     </html>
   );
 }

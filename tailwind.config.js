@@ -7,25 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      width: { 258: '258px', 450: '450px', 44: '44px' },
-      height: {
-        100: '100px',
-        40: '40px',
-      },
       colors: {
         'custom-gray': '#313538',
       },
-      padding: {
-        60: '60px',
-        54: '54px',
-        26: '26px',
-      },
-      margin: {
-        57: '57px',
-      },
-      gap: {
-        42: '42px',
-      },
+
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

@@ -17,12 +17,18 @@ export default function Header() {
         <div className='w-[258px] h-full bg-logo mr-[57px]'></div>
         <div className='flex justify-between items-center h-full w-[450px] mr-auto'>
           {categories.map((category, index) => (
-            <div
-              key={`${category}${index}`}
-              className='w-full text-center text-[20px] tracking-[30px] indent-[30px]'
-            >
-              {category.label}
-            </div>
+            <>
+              <div
+                key={`${category}${index}`}
+                className={`w-full text-center text-[20px] tracking-[30px] indent-[30px] leading-[28px] border-r ${
+                  index === categories.length - 1
+                    ? null
+                    : 'border-custom-grey border-solid'
+                }`}
+              >
+                {category.label}
+              </div>
+            </>
           ))}
         </div>
         <div className='flex h-full gap-[42px]'>

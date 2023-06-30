@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  color: #3f3a3a;
+}
+
 html,
 body,
 div,

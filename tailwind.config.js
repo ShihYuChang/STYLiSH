@@ -8,13 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-grey': '#313538',
+        'custom-grey': '#3f3a3a',
         'custom-brown': '#8b572a',
         'icon-brown': '#4c4747',
         'icon-hover-brown': '#9E724D',
         'cart-qty-brown': '#8b572a',
         'footer-text-white': '#f5f5f5',
         'footer-grey': '#828282',
+        'product-green': '#ddffbb',
+        'product-grey': '#d3d3d3',
       },
 
       backgroundImage: {

@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from './Logo';
 import Menu from './Menu';
 import SearchBar from './SearchBar';
-import RightIcons from './RightIcons';
+import RightIcons from './Icons';
 
 export default function Header() {
   return (

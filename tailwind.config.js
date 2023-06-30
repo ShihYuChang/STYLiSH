@@ -22,6 +22,9 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         logo: "url('./img/logo.svg')",
+        line: "url('./img/icons/line.svg')",
+        facebook: "url('./img/icons/facebook.svg')",
+        twitter: "url('./img/icons/twitter.svg')",
       },
     },
   },

@@ -26,6 +26,7 @@ module.exports = {
         facebook: "url('./img/icons/facebook.svg')",
         twitter: "url('./img/icons/twitter.svg')",
         banner1: "url('./img/carousels/banner1.svg')",
+        dress: "url('./img/products/dress.svg')",
       },
     },
   },

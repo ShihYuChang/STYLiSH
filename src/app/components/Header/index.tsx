@@ -6,8 +6,8 @@ import RightIcons from './Icons';
 
 export default function Header() {
   return (
-    <div className='w-full sticky top-0 left-0 z-10 bg-white'>
-      <div className='box-border h-[100px] flex justify-between item-center pl-[60px] pr-[54px] py-[26px]'>
+    <div className='w-full sticky top-0 left-0 z-10'>
+      <div className='box-border h-[100px] flex justify-between item-center pl-[60px] pr-[54px] py-[26px] bg-white'>
         <Logo />
         <Menu />
         <div className='flex h-full gap-[42px]'>

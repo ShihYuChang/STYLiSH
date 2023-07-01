@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { Variants, ProductInfo } from '@/utils/types';
 import { fetchData } from '@/utils/api';
 import useInfiniteScoll from '@/hooks/useInfiniteScroll';
+import { useSearchParams } from 'next/navigation';
+
+const categories: string[] = ['men', 'women', 'accessories'];
 
 function getColorVariants(rawData: ProductInfo[]) {
   const colorVariants: Variants = {};
@@ -26,22 +29,30 @@ function getMainImages(rawData: ProductInfo[]) {
 }
 
 export default function Products() {
+  const searchParams = useSearchParams();
   const [products, setProducts] = useState<ProductInfo[]>([]);
   const colorVariants: Variants = getColorVariants(products);
   const mainImgVariants: Variants = getMainImages(products);
   const { page, setHasLoadData } = useInfiniteScoll();
+  const category = searchParams.get('category');
 
   useEffect(() => {
     async function getProductData(page: number) {
       const { data, next_paging } = await fetchData(
-        `https://api.appworks-school.tw/api/1.0/products/all?paging=${page}`
+        `https://api.appworks-school.tw/api/1.0/products/${
+          category ?? 'all'
+        }?paging=${page}`
       );
       const newProducts = [...products, ...data];
       setProducts(newProducts);
       next_paging && setHasLoadData(false);
     }
 
-    getProductData(page);
+    if (!category || categories.includes(category)) {
+      getProductData(page);
+    } else {
+      window.location.href = '/';
+    }
   }, [page]);
 
   if (products.length === 0) {

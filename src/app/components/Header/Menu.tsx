@@ -24,7 +24,7 @@ export default function Menu() {
                 : 'border-custom-grey border-solid'
             }`}
           >
-            {category.label}
+            <a href={`?category=${category.route}`}>{category.label}</a>
           </div>
         </>
       ))}

@@ -1,6 +1,8 @@
-import React from 'react';
+'use client';
+import React, { useState, useEffect } from 'react';
 import { Variants, ProductInfo } from '@/utils/types';
 import { fetchData } from '@/utils/api';
+import useInfiniteScoll from '@/hooks/useInfiniteScroll';
 
 function getColorVariants(rawData: ProductInfo[]) {
   const colorVariants: Variants = {};
@@ -23,14 +25,28 @@ function getMainImages(rawData: ProductInfo[]) {
   return mainImgVariants;
 }
 
-export default async function Products() {
-  const { data } = await fetchData(
-    'https://api.appworks-school.tw/api/1.0/products/all'
-  );
-  const products: ProductInfo[] = await data;
+export default function Products() {
+  const [products, setProducts] = useState<ProductInfo[]>([]);
   const colorVariants: Variants = getColorVariants(products);
   const mainImgVariants: Variants = getMainImages(products);
+  const { page, setHasLoadData } = useInfiniteScoll();
 
+  useEffect(() => {
+    async function getProductData(page: number) {
+      const { data, next_paging } = await fetchData(
+        `https://api.appworks-school.tw/api/1.0/products/all?paging=${page}`
+      );
+      const newProducts = [...products, ...data];
+      setProducts(newProducts);
+      next_paging && setHasLoadData(false);
+    }
+
+    getProductData(page);
+  }, [page]);
+
+  if (products.length === 0) {
+    return;
+  }
   return (
     <div className='grid grid-cols-3 w-[1160px] mx-auto gap-y-[50px] leading-[24px] text-[20px] tracking-[4px]'>
       {products.map((product, index) => (

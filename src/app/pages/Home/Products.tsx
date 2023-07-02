@@ -1,9 +1,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Variants, ProductInfo } from '@/utils/types';
-import { fetchData } from '@/utils/api';
 import useInfiniteScoll from '@/hooks/useInfiniteScroll';
 import { useSearchParams } from 'next/navigation';
+import { api } from '@/utils/api';
 
 const categories: string[] = ['men', 'women', 'accessories'];
 
@@ -35,21 +35,17 @@ export default function Products() {
   const mainImgVariants: Variants = getMainImages(products);
   const { page, setHasLoadData } = useInfiniteScoll();
   const category = searchParams.get('category');
+  const { getProductData } = api;
 
   useEffect(() => {
-    async function getProductData(page: number) {
-      const { data, next_paging } = await fetchData(
-        `https://api.appworks-school.tw/api/1.0/products/${
-          category ?? 'all'
-        }?paging=${page}`
-      );
+    async function renderProducts() {
+      const { data, next_paging } = await getProductData(page, category);
       const newProducts = [...products, ...data];
       setProducts(newProducts);
       next_paging && setHasLoadData(false);
     }
-
     if (!category || categories.includes(category)) {
-      getProductData(page);
+      renderProducts();
     } else {
       window.location.href = '/';
     }

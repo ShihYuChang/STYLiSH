@@ -1,8 +1,10 @@
 'use client';
 import { useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
+import { useRouter } from 'next/navigation';
 
 export default function SearchBar() {
+  const router = useRouter();
   const [userInput, setUserInput] = useState<string>('');
 
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
@@ -12,7 +14,7 @@ export default function SearchBar() {
 
   async function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    window.location.href = `/search/${userInput}`;
+    router.push(`/search/${userInput}`);
   }
 
   return (

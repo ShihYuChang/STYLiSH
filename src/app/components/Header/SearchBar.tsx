@@ -25,9 +25,12 @@ export default function SearchBar() {
         placeholder='搜尋'
         onChange={handleInput}
       />
-      <div className='h-full w-[44px] shrink-0 text-[30px] text-icon-brown flex items-center justify-center cursor-pointer'>
+      <button
+        type='submit'
+        className='h-full w-[44px] shrink-0 text-[30px] text-icon-brown flex items-center justify-center cursor-pointer'
+      >
         <CiSearch />
-      </div>
+      </button>
     </form>
   );
 }

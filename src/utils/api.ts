@@ -8,9 +8,9 @@ export const api = {
     return await response.json();
   },
 
-  async searchProduct(page: number) {
+  async searchProduct(keyword: string, page: number) {
     const response = await fetch(
-      `https://api.appworks-school.tw/api/1.0/products/search?keyword=洋裝&paging=${page}`
+      `https://api.appworks-school.tw/api/1.0/products/search?keyword=${keyword}&paging=${page}`
     );
     return response.json();
   },

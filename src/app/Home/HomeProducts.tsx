@@ -1,10 +1,10 @@
 'use client';
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Variants, ProductInfo } from '@/utils/types';
 import useInfiniteScoll from '@/hooks/useInfiniteScroll';
 import { useSearchParams } from 'next/navigation';
 import { api } from '@/utils/api';
-import { HomeContext } from '@/context/HomeContext';
+import Products from '../components/Products/Products';
 
 const categories: string[] = ['men', 'women', 'accessories'];
 
@@ -29,9 +29,9 @@ function getMainImages(rawData: ProductInfo[]) {
   return mainImgVariants;
 }
 
-export default function Products() {
+export default function HomeProducts() {
   const searchParams = useSearchParams();
-  const { products, setProducts } = useContext(HomeContext);
+  const [products, setProducts] = useState<ProductInfo[]>([]);
   const colorVariants: Variants = getColorVariants(products);
   const mainImgVariants: Variants = getMainImages(products);
   const { page, setHasLoadData } = useInfiniteScoll();
@@ -54,27 +54,5 @@ export default function Products() {
   if (products.length === 0) {
     return;
   }
-  return (
-    <div className='grid grid-cols-3 w-[1160px] mx-auto gap-y-[50px] leading-[24px] text-[20px] tracking-[4px]'>
-      {products.map((product, index) => (
-        <div key={`${product}${index}`} className='w-[360px]'>
-          <div
-            className={`w-full h-[480px] mb-[20px] bg-contain`}
-            style={{ backgroundImage: mainImgVariants[product.title] }}
-          ></div>
-          <div className='flex gap-[10px] mb-[20px]'>
-            {product.colors.map((color, index) => (
-              <div
-                key={`${color}${index}`}
-                className={`w-[24px] h-[24px] border border-solid border-[#d3d3d3]`}
-                style={{ backgroundColor: colorVariants[color.name] }}
-              />
-            ))}
-          </div>
-          <div className='mb-[10px]'>{product.title}</div>
-          <div>TWD.{product.price}</div>
-        </div>
-      ))}
-    </div>
-  );
+  return <Products products={products} />;
 }

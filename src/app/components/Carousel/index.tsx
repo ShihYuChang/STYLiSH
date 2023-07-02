@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import Text from './Text';
 
@@ -8,8 +9,11 @@ export default function Carousel() {
     <div className='w-full h-[500px] bg-banner1 relative mb-[70px] bg-cover bg-center'>
       <Text />
       <div className='flex gap-[22px] absolute bottom-[34px] left-[50%]'>
-        {dots.map((dot) => (
-          <div className='w-[10px] h-[10px] rounded-[50%] opacity-40 bg-white' />
+        {dots.map((dot, index) => (
+          <div
+            key={index}
+            className='w-[10px] h-[10px] rounded-[50%] opacity-40 bg-white'
+          />
         ))}
       </div>
     </div>

@@ -1,9 +1,10 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Variants, ProductInfo } from '@/utils/types';
 import useInfiniteScoll from '@/hooks/useInfiniteScroll';
 import { useSearchParams } from 'next/navigation';
 import { api } from '@/utils/api';
+import { HomeContext } from '@/context/HomeContext';
 
 const categories: string[] = ['men', 'women', 'accessories'];
 
@@ -30,16 +31,15 @@ function getMainImages(rawData: ProductInfo[]) {
 
 export default function Products() {
   const searchParams = useSearchParams();
-  const [products, setProducts] = useState<ProductInfo[]>([]);
+  const { products, setProducts } = useContext(HomeContext);
   const colorVariants: Variants = getColorVariants(products);
   const mainImgVariants: Variants = getMainImages(products);
   const { page, setHasLoadData } = useInfiniteScoll();
   const category = searchParams.get('category');
-  const { getProductData } = api;
 
   useEffect(() => {
     async function renderProducts() {
-      const { data, next_paging } = await getProductData(page, category);
+      const { data, next_paging } = await api.getProductData(page, category);
       const newProducts = [...products, ...data];
       setProducts(newProducts);
       next_paging && setHasLoadData(false);

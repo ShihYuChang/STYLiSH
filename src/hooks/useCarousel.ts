@@ -14,6 +14,7 @@ export function useCarousel(data: any[]) {
 
       return () => clearInterval(interval);
     }
+    return undefined;
   }, [data, isHover]);
 
   return { currentIndex, setCurrentIndex, isHover, setIsHover };

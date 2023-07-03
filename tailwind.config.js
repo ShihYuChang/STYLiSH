@@ -6,17 +6,13 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    screens: {
+      xl: { min: '1280px' },
+    },
     extend: {
       colors: {
         'custom-grey': '#3f3a3a',
         'custom-brown': '#8b572a',
-        'icon-brown': '#4c4747',
-        'icon-hover-brown': '#9E724D',
-        'cart-qty-brown': '#8b572a',
-        'footer-text-white': '#f5f5f5',
-        'footer-grey': '#828282',
-        'product-green': '#ddffbb',
-        'product-grey': '#d3d3d3',
       },
 
       backgroundImage: {
@@ -27,8 +23,6 @@ module.exports = {
         line: "url('./img/icons/line.svg')",
         facebook: "url('./img/icons/facebook.svg')",
         twitter: "url('./img/icons/twitter.svg')",
-        banner1: "url('./img/carousels/banner1.svg')",
-        dress: "url('./img/products/dress.svg')",
       },
     },
   },

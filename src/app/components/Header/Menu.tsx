@@ -13,7 +13,7 @@ const categories: Category[] = [
 
 export default function Menu() {
   return (
-    <div className='flex justify-between items-center h-full w-[450px] mr-auto'>
+    <div className='xl:flex hidden justify-between items-center h-full w-[450px] mr-auto'>
       {categories.map((category, index) => (
         <>
           <div

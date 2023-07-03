@@ -19,7 +19,7 @@ export default function SearchBar() {
 
   return (
     <form
-      className='w-[214px] h-[44px] flex items-center border border-solid border-custom-grey rounded-[20px] pl-[20px] pr-[10px]'
+      className='hidden xl:flex  w-[214px] h-[44px] items-center border border-solid border-custom-grey rounded-[20px] pl-[20px] pr-[10px]'
       onSubmit={handleSearch}
     >
       <input

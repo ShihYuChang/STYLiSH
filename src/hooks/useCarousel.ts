@@ -2,16 +2,19 @@ import { useState, useEffect } from 'react';
 
 export function useCarousel(data: any[]) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [isHover, setIsHover] = useState(false);
 
   useEffect(() => {
-    if (data.length > 0) {
+    if (!isHover && data.length > 0) {
       const interval = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % data.length);
-      }, 3000);
+      }, 5000);
+
+      isHover && clearInterval(interval);
 
       return () => clearInterval(interval);
     }
-  }, [data]);
+  }, [data, isHover]);
 
-  return { currentIndex };
+  return { currentIndex, setCurrentIndex, isHover, setIsHover };
 }

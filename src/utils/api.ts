@@ -14,4 +14,11 @@ export const api = {
     );
     return response.json();
   },
+
+  async getBanners() {
+    const response = await fetch(
+      'https://api.appworks-school.tw/api/1.0/marketing/campaigns'
+    );
+    return response.json();
+  },
 };

@@ -1,4 +1,6 @@
+'use client';
 import React from 'react';
+import { useSearchParams } from 'next/navigation';
 
 interface Category {
   label: '女裝' | '男裝' | '配件';
@@ -12,19 +14,31 @@ const categories: Category[] = [
 ];
 
 export default function Menu() {
+  const searchParams = useSearchParams();
+  const currentCatgeroy = searchParams.get('category');
+
   return (
-    <div className='xl:flex hidden justify-between items-center h-full w-[450px] mr-auto'>
+    <div className='flex justify-between items-center h-full w-full xl:w-[450px] mr-auto'>
       {categories.map((category, index) => (
         <>
           <div
             key={`${category}${index}`}
-            className={`w-full text-center text-[20px] tracking-[30px] indent-[30px] leading-[28px] border-r ${
+            className={`w-full text-center xl:text-[20px] xl:tracking-[30px] xl:indent-[30px] xl:leading-[28px] leading-[50px] border-r  ${
               index === categories.length - 1
                 ? null
-                : 'border-custom-grey border-solid'
+                : 'xl:border-[#3f3a3a] border-[#808080] border-solid'
             }`}
           >
-            <a href={`/?category=${category.route}`}>{category.label}</a>
+            <a
+              className={`${
+                currentCatgeroy === category.route
+                  ? 'text-white xl:text-[#8b572a]'
+                  : 'text-[#828282] xl:text-[#3f3a3a]'
+              }`}
+              href={`/?category=${category.route}`}
+            >
+              {category.label}
+            </a>
           </div>
         </>
       ))}

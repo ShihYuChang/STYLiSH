@@ -30,13 +30,14 @@ export default function Products({ products }: ComponentProps) {
   const colorVariants: Variants = getColorVariants(products);
   const mainImgVariants: Variants = getMainImages(products);
   return (
-    <div className='grid grid-cols-3 w-[1160px] mx-auto gap-y-[50px] leading-[24px] text-[20px] tracking-[4px]'>
+    <div className='grid grid-cols-2 px-[24px] xl:p-0 xl:grid-cols-3 w-[86.66%] xl:w-[1160px] mx-auto gap-y-[50px] leading-[24px] text-[20px] tracking-[4px] gap-x-[6px] xl:gap-0'>
       {products.map((product, index) => (
-        <div key={`${product}${index}`} className='w-[360px]'>
-          <div
-            className={`w-full h-[480px] mb-[20px] bg-contain`}
-            style={{ backgroundImage: mainImgVariants[product.title] }}
-          ></div>
+        <div key={`${product}${index}`} className='xl:w-[360px]'>
+          <img
+            className={`w-full xl:h-[480px] mb-[20px] bg-contain bg-center`}
+            // style={{ backgroundImage: mainImgVariants[product.title] }}
+            src={product.main_image}
+          ></img>
           <div className='flex gap-[10px] mb-[20px]'>
             {product.colors.map((color, index) => (
               <div

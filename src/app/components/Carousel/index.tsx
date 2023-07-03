@@ -46,7 +46,7 @@ export default function Carousel() {
 
   return (
     <div
-      className='w-full h-[500px] mb-[70px]'
+      className='w-full h-[38.5vw] xl:h-[500px] mb-[15px] xl:mb-[70px]'
       onMouseOver={() => setIsHover(true)}
       onMouseOut={() => setIsHover(false)}
     >
@@ -55,7 +55,7 @@ export default function Carousel() {
           key={`${img.product_id}`}
           className={`${
             index === currentIndex ? 'opacity-100' : 'opacity-0'
-          } w-full h-[38.5vw] xl:h-[500px] bg-banner1 absolute bg-cover bg-center transition-opacity ease-in duration-300`}
+          } w-full h-[38.5vw] xl:h-[500px] bg-banner1 absolute bg-cover bg-center transition-opacity ease-in duration-500`}
           style={{ backgroundImage: `url(${img.picture})` }}
         >
           <Text />

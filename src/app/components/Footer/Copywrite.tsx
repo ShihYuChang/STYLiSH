@@ -1,8 +1,6 @@
-import React from 'react';
-
 export default function Copywrite() {
   return (
-    <div className='text-[12px] text-footer-grey leading-[17.38px]'>
+    <div className='text-center text-[12px] text-[#828282] leading-[17.38px]'>
       © 2018. All rights reserved.
     </div>
   );

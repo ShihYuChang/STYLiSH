@@ -24,10 +24,12 @@ export default function RootLayout({
       </head>
       <body className={`${noto_sans.className} text-custom-grey`}>
         <HomeContextProvider>
-          <Header />
-          {children}
-          <Footer />
-          <MobileFooter />
+          <div className='min-h-screen flex flex-col'>
+            <Header />
+            <div className='grow'>{children}</div>
+            <Footer />
+            <MobileFooter />
+          </div>
         </HomeContextProvider>
       </body>
     </html>

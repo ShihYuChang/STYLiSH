@@ -13,11 +13,11 @@ const categories: Category[] = [
 
 export default function Menu() {
   return (
-    <div className='grid grid-cols-2 justify-center xl:flex xl:mr-[101px] gap-[8px]'>
+    <div className='grid grid-cols-2 gap-x-[36px] justify-center xl:flex xl:mr-[101px] gap-[8px]'>
       {categories.map((category, index) => (
         <div
           key={`${category}${index}`}
-          className={`w-[134px] text-[14px] xl:text-[16px] xl:flex justify-center items-center leading-[20px] xl:leading-[22px] ${
+          className={`xl:w-[134px] text-[14px] xl:text-[16px] xl:flex justify-center items-center leading-[20px] xl:leading-[22px] ${
             index === categories.length - 1
               ? null
               : 'xl:border-r xl:border-solid xl:border-[#828282]'

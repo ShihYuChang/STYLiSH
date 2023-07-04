@@ -1,8 +1,10 @@
-import './globals.css';
-import { Noto_Sans_TC } from 'next/font/google';
-import Header from './components/Header';
-import Footer from './components/Footer';
+/* eslint-disable camelcase */
 import HomeContextProvider from '@/context/HomeContext';
+import { Noto_Sans_TC } from 'next/font/google';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import MobileFooter from './components/MobileFooter';
+import './globals.css';
 
 const noto_sans = Noto_Sans_TC({
   weight: ['400', '700'],
@@ -25,6 +27,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <MobileFooter />
         </HomeContextProvider>
       </body>
     </html>

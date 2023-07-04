@@ -1,8 +1,7 @@
-import React from 'react';
+import RightIcons from './Icons';
 import Logo from './Logo';
 import Menu from './Menu';
 import SearchBar from './SearchBar';
-import RightIcons from './Icons';
 
 export default function Header() {
   return (
@@ -17,7 +16,7 @@ export default function Header() {
           <RightIcons />
         </div>
       </div>
-      <div className='h-[50px] xl:h-[40px] bg-custom-grey'>
+      <div className='h-[50px] xl:h-[40px] bg-[#313538]'>
         <div className='xl:hidden'>
           <Menu />
         </div>

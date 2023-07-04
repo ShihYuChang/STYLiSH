@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 import { useSearchParams } from 'next/navigation';
 
 interface Category {
@@ -17,17 +16,17 @@ export default function Menu() {
   const searchParams = useSearchParams();
   const currentCatgeroy = searchParams.get('category');
 
+  function SplitLine() {
+    return <div className='w-[1px] h-[16px] bg-[#828282]' />;
+  }
+
   return (
     <div className='flex justify-between items-center h-full w-full xl:w-[450px] mr-auto'>
       {categories.map((category, index) => (
         <>
           <div
             key={`${category}${index}`}
-            className={`w-full text-center xl:text-[20px] xl:tracking-[30px] xl:indent-[30px] xl:leading-[28px] leading-[50px] border-r  ${
-              index === categories.length - 1
-                ? null
-                : 'xl:border-[#3f3a3a] border-[#808080] border-solid'
-            }`}
+            className={`w-full text-center xl:text-[20px] xl:tracking-[30px] xl:indent-[30px] xl:leading-[28px] leading-[50px]`}
           >
             <a
               className={`${
@@ -40,6 +39,7 @@ export default function Menu() {
               {category.label}
             </a>
           </div>
+          {index !== categories.length - 1 && <SplitLine />}
         </>
       ))}
     </div>

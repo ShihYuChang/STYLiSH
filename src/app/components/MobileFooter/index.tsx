@@ -13,6 +13,18 @@ const options: MenuItem[] = [
   { label: '會員', route: '/profile', icon: CgProfile, counter: false },
 ];
 
+function Counter() {
+  return (
+    <div className='w-[24px] h-[24px] bg-[#8b572a] rounded-[50%] text-[16px] flex justify-center items-center absolute bottom-[-5px] right-0'>
+      1
+    </div>
+  );
+}
+
+function SplitLine() {
+  return <div className='w-[1px] h-[24px] bg-[#828282]' />;
+}
+
 export default function MobileFooter() {
   return (
     <div className='xl:hidden w-full h-[60px] sticky bottom-0 bg-[#313538] text-white flex'>
@@ -22,16 +34,12 @@ export default function MobileFooter() {
           <div key={index} className='w-full flex items-center'>
             <div className='w-full flex items-center justify-center'>
               <div className='w-[44px] text-[30px] text-white flex justify-center relative'>
-                {option.counter && (
-                  <div className='w-[24px] h-[24px] bg-[#8b572a] rounded-[50%] text-[16px] flex justify-center items-center absolute bottom-[-5px] right-0'>
-                    1
-                  </div>
-                )}
                 <IconComponent />
+                {option.counter && <Counter />}
               </div>
               {option.label}
             </div>
-            <div className='w-[1px] h-[24px] bg-[#828282]'></div>
+            {index !== options.length - 1 && <SplitLine />}
           </div>
         );
       })}

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ProductInfo, Variants } from '@/utils/types';
 
 interface ComponentProps {
@@ -17,25 +16,14 @@ function getColorVariants(rawData: ProductInfo[]) {
   return colorVariants;
 }
 
-function getMainImages(rawData: ProductInfo[]) {
-  const mainImgVariants: Variants = {};
-  rawData.forEach((product) => {
-    const style = product.main_image ? `url(${product.main_image})` : '';
-    mainImgVariants[product.title] = style;
-  });
-  return mainImgVariants;
-}
-
 export default function Products({ products }: ComponentProps) {
   const colorVariants: Variants = getColorVariants(products);
-  const mainImgVariants: Variants = getMainImages(products);
   return (
-    <div className='grid grid-cols-2 px-[24px] xl:p-0 xl:grid-cols-3 w-[86.66%] xl:w-[1160px] mx-auto gap-y-[50px] leading-[24px] text-[20px] tracking-[4px] gap-x-[6px] xl:gap-0'>
+    <div className='grid grid-cols-2 px-[24px] xl:p-0 xl:grid-cols-3 w-[86.66%] xl:w-[1160px] mx-auto gap-y-[50px] leading-[14px] xl:leading-[24px] text-[12px] xl:text-[20px] tracking-[2.4px] xl:tracking-[4px] gap-x-[6px] xl:gap-0'>
       {products.map((product, index) => (
         <div key={`${product}${index}`} className='xl:w-[360px]'>
           <img
             className={`w-full xl:h-[480px] mb-[20px] bg-contain bg-center`}
-            // style={{ backgroundImage: mainImgVariants[product.title] }}
             src={product.main_image}
           ></img>
           <div className='flex gap-[10px] mb-[20px]'>

@@ -1,9 +1,13 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
-import { useRouter } from 'next/navigation';
 
-export default function SearchBar() {
+interface SearchBarProps {
+  hasClickSearch: boolean;
+}
+
+export default function SearchBar({ hasClickSearch }: SearchBarProps) {
   const router = useRouter();
   const [userInput, setUserInput] = useState<string>('');
 
@@ -19,7 +23,9 @@ export default function SearchBar() {
 
   return (
     <form
-      className='hidden xl:flex  w-[214px] h-[44px] items-center border border-solid border-custom-grey rounded-[20px] pl-[20px] pr-[10px]'
+      className={`${
+        hasClickSearch ? 'flex' : 'hidden'
+      } xl:flex w-full xl:w-[214px] h-[40px] xl:h-[44px] items-center border border-solid border-custom-grey rounded-[20px] pl-[20px] pr-[10px]`}
       onSubmit={handleSearch}
     >
       <input

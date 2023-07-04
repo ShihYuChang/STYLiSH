@@ -32,7 +32,7 @@ export default function MobileFooter() {
         const IconComponent = option.icon;
         return (
           <div key={index} className='w-full flex items-center'>
-            <div className='w-full flex items-center justify-center'>
+            <div className='w-full flex items-center justify-center cursor-pointer'>
               <div className='w-[44px] text-[30px] text-white flex justify-center relative'>
                 <IconComponent />
                 {option.counter && <Counter />}

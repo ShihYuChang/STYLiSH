@@ -12,13 +12,13 @@ const categories: Category[] = [
   { label: '配件', route: 'accessories' },
 ];
 
+function SplitLine() {
+  return <div className='w-[1px] h-[16px] bg-[#828282]' />;
+}
+
 export default function Menu() {
   const searchParams = useSearchParams();
   const currentCatgeroy = searchParams.get('category');
-
-  function SplitLine() {
-    return <div className='w-[1px] h-[16px] bg-[#828282]' />;
-  }
 
   return (
     <div className='flex justify-between items-center h-full w-full xl:w-[450px] mr-auto'>

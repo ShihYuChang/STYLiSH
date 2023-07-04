@@ -1,5 +1,6 @@
 'use client';
 import { useSearchParams } from 'next/navigation';
+import { Fragment } from 'react';
 
 interface Category {
   label: '女裝' | '男裝' | '配件';
@@ -23,7 +24,7 @@ export default function Menu() {
   return (
     <div className='flex justify-between items-center h-full w-full xl:w-[450px] mr-auto'>
       {categories.map((category, index) => (
-        <>
+        <Fragment key={index}>
           <div
             key={`${category}${index}`}
             className={`w-full text-center xl:text-[20px] xl:tracking-[30px] xl:indent-[30px] xl:leading-[28px] leading-[50px]`}
@@ -40,7 +41,7 @@ export default function Menu() {
             </a>
           </div>
           {index !== categories.length - 1 && <SplitLine />}
-        </>
+        </Fragment>
       ))}
     </div>
   );

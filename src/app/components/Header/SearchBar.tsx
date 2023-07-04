@@ -16,9 +16,18 @@ export default function SearchBar({ hasClickSearch }: SearchBarProps) {
     setUserInput(input);
   }
 
+  function checkInput(input: string) {
+    const trimmedInput = input.replace(/\s+/g, '');
+    return trimmedInput.length > 0;
+  }
+
   async function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    router.push(`/search/${userInput}`);
+    if (checkInput(userInput)) {
+      router.push(`/search/${userInput}`);
+    } else {
+      alert('Please do not leave the space empty');
+    }
   }
 
   return (
@@ -31,6 +40,7 @@ export default function SearchBar({ hasClickSearch }: SearchBarProps) {
       <input
         className='w-full h-[24px] outline-none text-[20px] text-custom-brown'
         placeholder='搜尋'
+        value={userInput}
         onChange={handleInput}
       />
       <button

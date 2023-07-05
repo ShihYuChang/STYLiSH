@@ -35,7 +35,7 @@ export default function Header() {
         <div
           className={`${
             hasClickSearch && 'w-full'
-          } flex xl:h-full xl:gap-[42px] px-[10px]`}
+          } flex xl:h-full xl:gap-[42px] px-[10px] xl:ml-[auto]`}
         >
           <SearchBar
             hasClickSearch={hasClickSearch}

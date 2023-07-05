@@ -22,7 +22,7 @@ export default function Menu() {
   const currentCatgeroy = searchParams.get('category');
 
   return (
-    <div className='flex justify-between items-center h-full w-full xl:w-[450px] mr-auto'>
+    <div className='flex justify-between items-center h-full w-full xl:w-[450px]'>
       {categories.map((category, index) => (
         <Fragment key={index}>
           <div

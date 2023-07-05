@@ -4,13 +4,13 @@ import { ProductProps } from '@/utils/types';
 export default function BasicInfo({ product }: ProductProps) {
   return (
     <>
-      <div className='text-[20px] leading=[24px] tracking-[4px] mb-[10px]'>
+      <div className='text-[20px] xl:text-[32px] leading=[24px] xl:leading-[38px] tracking-[4px] xl:tracking-[6.4px] mb-[10px] xl:mb-[16px]'>
         {product.title}
       </div>
-      <div className='leading-[18px] tracking-[3.2px] text-[#bababa] mb-[20px]'>
+      <div className='xl:text-[20px] leading-[18px] xl:leading-[24px] tracking-[3.2px] xl:tracking-[4px] text-[#bababa] mb-[20px] xl:mb-[40px]'>
         {product.id}
       </div>
-      <div className='text-[20px] leading-[24px] pb-[10px] border-b border-solid border-[#3f3a3a] mb-[30px]'>
+      <div className='text-[20px] xl:text-[30px] leading-[24px] xl:leading-[36px] pb-[10px] xl:pb-[20px] border-b border-solid border-[#3f3a3a] mb-[30px]'>
         TWD.{product.price}
       </div>
     </>

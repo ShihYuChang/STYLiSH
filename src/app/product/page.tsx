@@ -25,14 +25,22 @@ export default function Product() {
   if (!product) return undefined;
   return (
     <div className='w-full xl:w-[960px] mx-auto xl:mt-[65px] mb-[32px] xl:mb-[49px]'>
-      <img src={product.main_image} className='w-full mb-[17px]' />
+      <img src={product.main_image} className='xl:hidden w-full mb-[17px]' />
       <div className='border-box w-full px-[24px]'>
-        <BasicInfo product={product} />
-        <ColorSelector product={product} />
-        <SizeSelector product={product} />
-        <QtySelector />
-        <AddToCart />
-        <Description product={product} />
+        <div className='xl:flex gap-[40px] xl:mb-[50.33px]'>
+          <img
+            src={product.main_image}
+            className='xl:block hidden w-[560px] mb-[17px]'
+          />
+          <div>
+            <BasicInfo product={product} />
+            <ColorSelector product={product} />
+            <SizeSelector product={product} />
+            <QtySelector />
+            <AddToCart />
+            <Description product={product} />
+          </div>
+        </div>
         <Story product={product} />
       </div>
     </div>

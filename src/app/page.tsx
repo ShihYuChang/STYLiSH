@@ -1,5 +1,5 @@
-import Carousel from './components/Carousel';
-import HomeProducts from './Home/HomeProducts';
+import Carousel from '../components/Carousel';
+import HomeProducts from '../components/Home/HomeProducts';
 
 export default async function Home() {
   return (

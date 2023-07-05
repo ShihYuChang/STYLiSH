@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import HomeContextProvider from '@/context/HomeContext';
 import { Noto_Sans_TC } from 'next/font/google';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import MobileFooter from './components/MobileFooter';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import MobileFooter from '../components/MobileFooter';
 import './globals.css';
 
 const noto_sans = Noto_Sans_TC({

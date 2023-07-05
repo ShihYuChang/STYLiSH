@@ -1,10 +1,10 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { ProductInfo } from '@/utils/types';
 import useInfiniteScoll from '@/hooks/useInfiniteScroll';
-import { useSearchParams } from 'next/navigation';
 import { api } from '@/utils/api';
-import Products from '../components/Products/Products';
+import { ProductInfo } from '@/utils/types';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import Products from '../Products/Products';
 
 const categories: string[] = ['men', 'women', 'accessories'];
 

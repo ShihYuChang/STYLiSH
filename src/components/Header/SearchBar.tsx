@@ -1,13 +1,17 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
 
 interface SearchBarProps {
   hasClickSearch: boolean;
+  setHasClickSearch: React.Dispatch<SetStateAction<boolean>>;
 }
 
-export default function SearchBar({ hasClickSearch }: SearchBarProps) {
+export default function SearchBar({
+  hasClickSearch,
+  setHasClickSearch,
+}: SearchBarProps) {
   const router = useRouter();
   const [userInput, setUserInput] = useState<string>('');
 
@@ -25,6 +29,7 @@ export default function SearchBar({ hasClickSearch }: SearchBarProps) {
     e.preventDefault();
     if (checkInput(userInput)) {
       router.push(`/search/${userInput}`);
+      setHasClickSearch(false);
     } else {
       alert('Please do not leave the space empty');
     }

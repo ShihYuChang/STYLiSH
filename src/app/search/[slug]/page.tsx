@@ -1,10 +1,10 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { api } from '@/utils/api';
-import { ProductInfo, Variants } from '@/utils/types';
-import Products from '@/app/components/Products/Products';
-import Carousel from '@/app/components/Carousel';
+import Carousel from '@/components/Carousel';
+import Products from '@/components/Products/Products';
 import useInfiniteScoll from '@/hooks/useInfiniteScroll';
+import { api } from '@/utils/api';
+import { ProductInfo } from '@/utils/types';
+import { useEffect, useState } from 'react';
 
 export default function Search({ params }: { params: { slug: string } }) {
   const { slug } = params;

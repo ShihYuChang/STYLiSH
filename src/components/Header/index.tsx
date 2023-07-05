@@ -37,7 +37,10 @@ export default function Header() {
             hasClickSearch && 'w-full'
           } flex xl:h-full xl:gap-[42px] px-[10px]`}
         >
-          <SearchBar hasClickSearch={hasClickSearch} />
+          <SearchBar
+            hasClickSearch={hasClickSearch}
+            setHasClickSearch={setHasClickSearch}
+          />
           <RightIcons />
         </div>
       </div>

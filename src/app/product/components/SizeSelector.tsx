@@ -39,13 +39,15 @@ export default function SizeSelector() {
             className={`w-[36px] h-[36px] rounded-[50%] ${
               size === selectedSize ? 'bg-black text-white' : 'bg-[#ececec]'
             } flex items-center justify-center ${
-              selectedColor && colorSizeList[selectedColor][size] === 0
+              selectedColor && colorSizeList[selectedColor.code][size] === 0
                 ? 'opacity-25 cursor-not-allowed'
                 : 'opacity-1'
             }`}
             onClick={() => selectSize(size)}
             disabled={
-              selectedColor ? colorSizeList[selectedColor][size] === 0 : false
+              selectedColor
+                ? colorSizeList[selectedColor.code][size] === 0
+                : false
             }
           >
             {size}

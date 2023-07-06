@@ -21,10 +21,10 @@ export default function QtySelector() {
 
   useEffect(() => {
     if (selectedColor && selectedSize) {
-      const stock = colorSizeList[selectedColor][selectedSize];
+      const stock = colorSizeList[selectedColor.code][selectedSize];
       setProductQty(Number(stock));
     }
-  }, [selectedColor, selectedSize]);
+  }, [selectedColor?.code, selectedSize]);
 
   return (
     <div className='flex items-center mb-[10px] xl:mb-[26px]'>

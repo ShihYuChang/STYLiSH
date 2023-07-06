@@ -61,3 +61,8 @@ export interface SizeProps {
 export interface ProductProps {
   product: ProductData;
 }
+
+export interface SelectedColor {
+  code: string;
+  name: string;
+}

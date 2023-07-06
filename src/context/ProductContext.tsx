@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable no-empty-function */
 'use client';
-import { ColorSizeList, ProductData } from '@/utils/types';
+import { ColorSizeList, ProductData, SelectedColor } from '@/utils/types';
 import { ReactNode, SetStateAction, createContext, useState } from 'react';
 
 interface ContextProps {
@@ -9,8 +9,8 @@ interface ContextProps {
   setProduct: React.Dispatch<SetStateAction<ProductData | null>>;
   colorSizeList: ColorSizeList;
   setColorSizeList: React.Dispatch<SetStateAction<ColorSizeList>>;
-  selectedColor: null | string;
-  setSelectedColor: React.Dispatch<SetStateAction<string | null>>;
+  selectedColor: null | SelectedColor;
+  setSelectedColor: React.Dispatch<SetStateAction<SelectedColor | null>>;
   selectedSize: null | string;
   setSelectedSize: React.Dispatch<SetStateAction<string | null>>;
   quantity: number;
@@ -37,7 +37,9 @@ export const ProductContext = createContext<ContextProps>({
 export default function ProductContextProvider({ children }: ProviderProps) {
   const [product, setProduct] = useState<ProductData | null>(null);
   const [colorSizeList, setColorSizeList] = useState<ColorSizeList>({});
-  const [selectedColor, setSelectedColor] = useState<null | string>(null);
+  const [selectedColor, setSelectedColor] = useState<null | SelectedColor>(
+    null
+  );
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
 

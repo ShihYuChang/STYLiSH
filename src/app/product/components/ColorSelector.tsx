@@ -1,11 +1,12 @@
 import { ProductContext } from '@/context/ProductContext';
+import { SelectedColor } from '@/utils/types';
 import { useContext, useEffect } from 'react';
 
 export default function ColorSelector() {
   const { product, selectedColor, setSelectedColor } =
     useContext(ProductContext);
 
-  function selectColor(color: string) {
+  function selectColor(color: SelectedColor) {
     setSelectedColor(color);
   }
 
@@ -24,7 +25,7 @@ export default function ColorSelector() {
           <div
             key={index}
             className={`p-[6px] ${
-              color.code === selectedColor
+              color.code === selectedColor?.code
                 ? 'border border-solid border-black'
                 : 'border-0'
             }`}
@@ -32,7 +33,7 @@ export default function ColorSelector() {
             <button
               className='w-[24px] h-[24px] border border-solid border-[#d3d3d3]'
               style={{ backgroundColor: `#${color.code}` }}
-              onClick={() => selectColor(color.code)}
+              onClick={() => selectColor(color)}
             />
           </div>
         ))}

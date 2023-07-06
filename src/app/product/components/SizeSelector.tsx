@@ -1,13 +1,19 @@
 import { ProductContext } from '@/context/ProductContext';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 export default function SizeSelector() {
-  const { product, colorSizeList } = useContext(ProductContext);
+  const { product, colorSizeList, selectedColor } = useContext(ProductContext);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   function selectSize(size: string) {
     setSelectedSize(size);
   }
+
+  useEffect(() => {
+    if (selectedColor) {
+      setSelectedSize(null);
+    }
+  }, [selectedColor]);
 
   if (!product) return undefined;
   return (
@@ -21,8 +27,15 @@ export default function SizeSelector() {
             key={index}
             className={`w-[36px] h-[36px] rounded-[50%] ${
               size === selectedSize ? 'bg-black text-white' : 'bg-[#ececec]'
-            } flex items-center justify-center`}
+            } flex items-center justify-center ${
+              selectedColor && colorSizeList[selectedColor][size] === 0
+                ? 'opacity-25 cursor-not-allowed'
+                : 'opacity-1'
+            }`}
             onClick={() => selectSize(size)}
+            disabled={
+              selectedColor ? colorSizeList[selectedColor][size] === 0 : false
+            }
           >
             {size}
           </button>

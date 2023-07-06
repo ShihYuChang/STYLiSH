@@ -30,8 +30,7 @@ function getColorSizeList(product: ProductData) {
 export default function Product() {
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
-  const { product, setProduct, colorSizeList, setColorSizeList } =
-    useContext(ProductContext);
+  const { product, setProduct, setColorSizeList } = useContext(ProductContext);
 
   useEffect(() => {
     async function getProductData(id: string) {

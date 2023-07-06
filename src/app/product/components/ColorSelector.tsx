@@ -1,12 +1,12 @@
 import { ProductContext } from '@/context/ProductContext';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 export default function ColorSelector() {
-  const { product } = useContext(ProductContext);
-  const [selectedColor, setSelectedColor] = useState<null | string>(null);
+  const { product, selectedColor, setSelectedColor } =
+    useContext(ProductContext);
 
-  function selectColor(colorName: string) {
-    setSelectedColor(colorName);
+  function selectColor(color: string) {
+    setSelectedColor(color);
   }
   if (!product) return undefined;
   return (
@@ -19,7 +19,7 @@ export default function ColorSelector() {
           <div
             key={index}
             className={`p-[6px] ${
-              color.name === selectedColor
+              color.code === selectedColor
                 ? 'border border-solid border-black'
                 : 'border-0'
             }`}
@@ -27,7 +27,7 @@ export default function ColorSelector() {
             <button
               className='w-[24px] h-[24px] border border-solid border-[#d3d3d3]'
               style={{ backgroundColor: `#${color.code}` }}
-              onClick={() => selectColor(color.name)}
+              onClick={() => selectColor(color.code)}
             />
           </div>
         ))}

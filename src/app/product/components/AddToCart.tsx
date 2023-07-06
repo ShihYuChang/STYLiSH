@@ -1,6 +1,6 @@
 'use client';
 import { ProductContext } from '@/context/ProductContext';
-import { LocalStorageItem, ProductData } from '@/utils/types';
+import { LocalStorageItem, ProductData, ProductVariants } from '@/types/types';
 import { useContext } from 'react';
 
 function combineProduct(cartItems: LocalStorageItem[]): LocalStorageItem[] {
@@ -36,7 +36,13 @@ export default function AddToCart() {
 
   function addToLocalStorage(product: ProductData) {
     const currentItems = localStorage.getItem('cartItems');
-    if (currentItems) {
+    const productStock: ProductVariants =
+      selectedColor &&
+      product.variants.find(
+        (item) =>
+          item.color_code === selectedColor.code && item.size === selectedSize
+      );
+    if (currentItems && productStock) {
       const parsedItems = JSON.parse(currentItems);
       const itemDetails: LocalStorageItem = {
         color: { name: selectedColor?.name, code: selectedColor?.code },
@@ -47,7 +53,9 @@ export default function AddToCart() {
         qty: quantity,
         size: selectedSize,
         totalPrice: product.price * quantity,
+        stock: productStock.stock,
       };
+
       parsedItems.push(itemDetails);
       const combinedItems = combineProduct(parsedItems);
 

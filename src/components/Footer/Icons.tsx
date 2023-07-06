@@ -1,4 +1,4 @@
-import { Variants } from '@/utils/types';
+import { Variants } from '@/types/types';
 
 const icons: string[] = ['line', 'twitter', 'facebook'];
 

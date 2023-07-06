@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable no-empty-function */
 'use client';
-import { ColorSizeList, ProductData, SelectedColor } from '@/utils/types';
+import { ColorSizeList, ProductData, SelectedColor } from '@/types/types';
 import { ReactNode, SetStateAction, createContext, useState } from 'react';
 
 interface ContextProps {

@@ -2,13 +2,13 @@ export interface Variants {
   [key: string]: string;
 }
 
-interface ProductVariants {
+export interface ProductVariants {
   color_code: string;
   size: string;
   stock: number;
 }
 
-interface ProductColors {
+export interface ProductColors {
   code: string;
   name: string;
 }
@@ -76,4 +76,5 @@ export interface LocalStorageItem {
   qty: number;
   size: string | null;
   totalPrice: number;
+  stock: number;
 }

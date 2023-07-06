@@ -3,7 +3,7 @@ import Carousel from '@/components/Carousel';
 import Products from '@/components/Products/Products';
 import useInfiniteScoll from '@/hooks/useInfiniteScroll';
 import { api } from '@/utils/api';
-import { ProductInfo } from '@/utils/types';
+import { ProductInfo } from '@/types/types';
 import { useEffect, useState } from 'react';
 
 export default function Search({ params }: { params: { slug: string } }) {

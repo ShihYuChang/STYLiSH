@@ -1,5 +1,5 @@
 import { ProductContext } from '@/context/ProductContext';
-import { SelectedColor } from '@/utils/types';
+import { SelectedColor } from '@/types/types';
 import { useContext, useEffect } from 'react';
 
 export default function ColorSelector() {

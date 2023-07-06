@@ -1,7 +1,7 @@
 'use client';
 import useInfiniteScoll from '@/hooks/useInfiniteScroll';
 import { api } from '@/utils/api';
-import { ProductInfo } from '@/utils/types';
+import { ProductInfo } from '@/types/types';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Products from '../Products/Products';

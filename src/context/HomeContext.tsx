@@ -1,6 +1,6 @@
 'use client';
 import { createContext, useState, ReactNode } from 'react';
-import { ProductInfo } from '@/utils/types';
+import { ProductInfo } from '@/types/types';
 
 interface ContextProps {
   products: ProductInfo[];

@@ -19,7 +19,7 @@ function Counter() {
   const { cartQty } = useContext(ProductContext);
   return (
     <div className='w-[24px] h-[24px] bg-[#8b572a] rounded-[50%] text-[16px] flex justify-center items-center absolute bottom-[-5px] right-0'>
-      {cartQty}
+      {cartQty ?? 0}
     </div>
   );
 }

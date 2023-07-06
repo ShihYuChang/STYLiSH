@@ -1,4 +1,4 @@
-import { ProductInfo, Variants } from '@/utils/types';
+import { ProductInfo, Variants } from '@/types/types';
 import Link from 'next/link';
 
 interface ComponentProps {

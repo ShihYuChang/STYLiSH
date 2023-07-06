@@ -1,5 +1,6 @@
 import { ProductContext } from '@/context/ProductContext';
 import { useContext, useEffect } from 'react';
+import { getCartQty } from '@/utils/functions';
 
 export default function SizeSelector() {
   const {
@@ -10,9 +11,25 @@ export default function SizeSelector() {
     setSelectedSize,
     setQuantity,
   } = useContext(ProductContext);
+  const cartItems = localStorage.getItem('cartItems');
 
   function selectSize(size: string) {
     setSelectedSize(size);
+  }
+
+  function getSizeCartQty(size: string): number {
+    if (cartItems && product && selectedColor) {
+      const parsedItems = JSON.parse(cartItems);
+      const sizeCartQty = getCartQty(
+        false,
+        parsedItems,
+        product,
+        selectedColor,
+        size
+      );
+      return sizeCartQty;
+    }
+    return 0;
   }
 
   useEffect(() => {
@@ -40,14 +57,19 @@ export default function SizeSelector() {
               size === selectedSize ? 'bg-black text-white' : 'bg-[#ececec]'
             } flex items-center justify-center ${
               !selectedColor ||
-              (selectedColor && colorSizeList[selectedColor.code][size] === 0)
+              (selectedColor &&
+                Number(colorSizeList[selectedColor.code][size]) -
+                  getSizeCartQty(size) <=
+                  0)
                 ? 'opacity-25 cursor-not-allowed'
                 : 'opacity-1'
             }`}
             onClick={() => selectSize(size)}
             disabled={
               selectedColor
-                ? colorSizeList[selectedColor.code][size] === 0
+                ? Number(colorSizeList[selectedColor.code][size]) -
+                    getSizeCartQty(size) <=
+                  0
                 : true
             }
           >

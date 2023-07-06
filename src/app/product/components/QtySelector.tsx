@@ -1,9 +1,17 @@
 import { ProductContext } from '@/context/ProductContext';
 import { useContext, useEffect, useState } from 'react';
+import { getCartQty } from '@/utils/functions';
 
 export default function QtySelector() {
-  const { selectedColor, selectedSize, quantity, setQuantity, colorSizeList } =
-    useContext(ProductContext);
+  const cartItems = localStorage.getItem('cartItems');
+  const {
+    product,
+    selectedColor,
+    selectedSize,
+    quantity,
+    setQuantity,
+    colorSizeList,
+  } = useContext(ProductContext);
   const [productQty, setProductQty] = useState<number>(0);
 
   function updateQuantity(action: string) {
@@ -20,11 +28,20 @@ export default function QtySelector() {
   }
 
   useEffect(() => {
-    if (selectedColor && selectedSize) {
+    if (product && selectedColor && selectedSize) {
       const stock = colorSizeList[selectedColor.code][selectedSize];
-      setProductQty(Number(stock));
+      const parsedCartItmes = cartItems ? JSON.parse(cartItems) : null;
+      const cartQty = getCartQty(
+        false,
+        parsedCartItmes,
+        product,
+        selectedColor,
+        selectedSize
+      );
+      const availableQty = Number(stock) - cartQty;
+      setProductQty(availableQty);
     }
-  }, [selectedColor?.code, selectedSize]);
+  }, [selectedColor, selectedSize]);
 
   return (
     <div className='flex items-center mb-[10px] xl:mb-[26px]'>

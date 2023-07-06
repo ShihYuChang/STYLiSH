@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 'use client';
 import { api } from '@/utils/api';
-import { ColorSizeList, ProductData } from '@/utils/types';
+import { ColorSizeList, ProductData } from '@/types/types';
 import { useSearchParams } from 'next/navigation';
 import { useContext, useEffect } from 'react';
 import { ProductContext } from '../../context/ProductContext';

@@ -2,14 +2,14 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { api } from '@/utils/api';
-import ColorSelector from './ColorSelector';
+import ColorSelector from './components/ColorSelector';
 import { ProductData } from '@/utils/types';
-import SizeSelector from './SizeSelector';
-import BasicInfo from './BasicInfo';
-import QtySelector from './QtySelector';
-import AddToCart from './AddToCart';
-import Description from './Description';
-import Story from './Story';
+import SizeSelector from './components/SizeSelector';
+import BasicInfo from './components/BasicInfo';
+import QtySelector from './components/QtySelector';
+import AddToCart from './components/AddToCart';
+import Description from './components/Description';
+import Story from './components/Story';
 
 export default function Product() {
   const searchParams = useSearchParams();

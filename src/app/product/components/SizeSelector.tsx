@@ -39,7 +39,8 @@ export default function SizeSelector() {
             className={`w-[36px] h-[36px] rounded-[50%] ${
               size === selectedSize ? 'bg-black text-white' : 'bg-[#ececec]'
             } flex items-center justify-center ${
-              selectedColor && colorSizeList[selectedColor.code][size] === 0
+              !selectedColor ||
+              (selectedColor && colorSizeList[selectedColor.code][size] === 0)
                 ? 'opacity-25 cursor-not-allowed'
                 : 'opacity-1'
             }`}
@@ -47,7 +48,7 @@ export default function SizeSelector() {
             disabled={
               selectedColor
                 ? colorSizeList[selectedColor.code][size] === 0
-                : false
+                : true
             }
           >
             {size}

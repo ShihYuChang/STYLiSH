@@ -31,6 +31,7 @@ export default function AddToCart() {
     setQuantity,
     setSelectedColor,
     setSelectedSize,
+    setCartQty,
   } = useContext(ProductContext);
 
   function addToLocalStorage(product: ProductData) {
@@ -60,8 +61,13 @@ export default function AddToCart() {
     setSelectedSize(null);
   }
 
+  function updateCartQty() {
+    setCartQty((prev) => prev + quantity);
+  }
+
   function addToCart(product: ProductData) {
     addToLocalStorage(product);
+    updateCartQty();
     resetSelection();
   }
 

@@ -66,3 +66,14 @@ export interface SelectedColor {
   code: string;
   name: string;
 }
+
+export interface LocalStorageItem {
+  color: { name: string | undefined; code: string | undefined };
+  id: number;
+  img: string;
+  title: string;
+  price: number;
+  qty: number;
+  size: string | null;
+  totalPrice: number;
+}

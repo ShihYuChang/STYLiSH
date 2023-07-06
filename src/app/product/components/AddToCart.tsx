@@ -1,31 +1,49 @@
 'use client';
 import { ProductContext } from '@/context/ProductContext';
-import { ProductData } from '@/utils/types';
+import { LocalStorageItem, ProductData } from '@/utils/types';
 import { useContext } from 'react';
 
-interface LocalStorageItem {
-  color: { name: string; code: string };
-  id: number;
-  img: string;
-  name: string;
-  price: number;
-  qty: number;
-  size: string;
-  totalPrice: number;
+function combineProduct(cartItems: LocalStorageItem[]): LocalStorageItem[] {
+  const output = cartItems.reduce<{ [key: string]: LocalStorageItem }>(
+    (acc, cur) => {
+      const key = `${cur.id}-${cur.color.code}-${cur.size}`;
+
+      if (!acc[key]) {
+        acc[key] = { ...cur };
+        return acc;
+      }
+      acc[key].qty += cur.qty;
+      acc[key].totalPrice += cur.totalPrice;
+
+      return acc;
+    },
+    {}
+  );
+  return Object.values(output);
 }
 
 export default function AddToCart() {
-  const { product, selectedColor, selectedSize } = useContext(ProductContext);
+  const { product, selectedColor, selectedSize, quantity } =
+    useContext(ProductContext);
 
   function addToLocalStorage(product: ProductData) {
     const currentItems = localStorage.getItem('cartItems');
     if (currentItems) {
       const parsedItems = JSON.parse(currentItems);
-      // const selectedItem: LocalStorageItem = {
-      //   color: {name: selectedColor}
-      // }
-      parsedItems.push(product);
-      localStorage.setItem('cartItems', JSON.stringify(parsedItems));
+      const itemDetails: LocalStorageItem = {
+        color: { name: selectedColor?.name, code: selectedColor?.code },
+        id: product.id,
+        img: product.main_image,
+        title: product.title,
+        price: product.price,
+        qty: quantity,
+        size: selectedSize,
+        totalPrice: product.price * quantity,
+      };
+      parsedItems.push(itemDetails);
+      const combinedItems = combineProduct(parsedItems);
+
+      localStorage.setItem('cartItems', JSON.stringify(combinedItems));
     }
   }
 

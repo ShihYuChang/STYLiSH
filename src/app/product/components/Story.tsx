@@ -1,7 +1,10 @@
-import React from 'react';
-import { ProductProps } from '@/utils/types';
+import { ProductContext } from '@/context/ProductContext';
+import { useContext } from 'react';
 
-export default function Story({ product }: ProductProps) {
+export default function Story() {
+  const { product } = useContext(ProductContext);
+
+  if (!product) return undefined;
   return (
     <div>
       <div className='flex w-full gap-[35px] mb-[12px] items-center'>

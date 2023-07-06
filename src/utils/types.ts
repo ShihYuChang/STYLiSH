@@ -49,6 +49,15 @@ export interface ProductData {
   images: string[];
 }
 
+export interface ColorSizeList {
+  [key: string]: { [key: string]: number | string };
+}
+
+export interface SizeProps {
+  product: ProductData;
+  colorSizeList: ColorSizeList;
+}
+
 export interface ProductProps {
   product: ProductData;
 }

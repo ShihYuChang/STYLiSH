@@ -1,12 +1,15 @@
-import React from 'react';
-import { ProductProps } from '@/utils/types';
+import { ProductContext } from '@/context/ProductContext';
+import { useContext } from 'react';
 
 function splitDescription(description: string) {
   const newDescription = description.split('\r\n');
   return newDescription;
 }
 
-export default function Description({ product }: ProductProps) {
+export default function Description() {
+  const { product } = useContext(ProductContext);
+
+  if (!product) return undefined;
   return (
     <div className='flex flex-col gap-[24px] xl:gap-[30px] text-[14px] xl:text-[20px] leading-[24px] xl:leading-[30p] mb-[28px]'>
       <div>實品顏色依單品照為主</div>

@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-import { ProductProps } from '@/utils/types';
+import { ProductContext } from '@/context/ProductContext';
+import { useContext, useState } from 'react';
 
-export default function ColorSelector({ product }: ProductProps) {
+export default function ColorSelector() {
+  const { product } = useContext(ProductContext);
   const [selectedColor, setSelectedColor] = useState<null | string>(null);
 
   function selectColor(colorName: string) {
     setSelectedColor(colorName);
   }
-
+  if (!product) return undefined;
   return (
     <div className='flex mb-[28px] items-center'>
-      <div className='w-[62px] xl:w-[68px] text-[14px] xl:text-[20px] leading-[17px] xl:leading-[24px] tracking-[2.8px] xl:tracking-[4px] xl:mr-[22px]'>
+      <div className='w-[62px] xl:w-[70px] text-[14px] xl:text-[20px] leading-[17px] xl:leading-[24px] tracking-[2.8px] xl:tracking-[4px] xl:mr-[22px]'>
         顏色 |
       </div>
-      <div className='flex gap-[21px] xl:gap-[26px]'>
+      <div className='flex gap-[15px]'>
         {product.colors.map((color, index) => (
           <div
             key={index}

@@ -1,7 +1,9 @@
-import React from 'react';
-import { ProductProps } from '@/utils/types';
+import { ProductContext } from '@/context/ProductContext';
+import { useContext } from 'react';
 
-export default function BasicInfo({ product }: ProductProps) {
+export default function BasicInfo() {
+  const { product } = useContext(ProductContext);
+  if (!product) return undefined;
   return (
     <>
       <div className='text-[20px] xl:text-[32px] leading=[24px] xl:leading-[38px] tracking-[4px] xl:tracking-[6.4px] mb-[10px] xl:mb-[16px]'>

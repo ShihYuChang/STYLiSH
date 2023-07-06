@@ -1,5 +1,6 @@
 import { BsCart3 } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
+import { LocalStorageItem } from '@/utils/types';
 
 interface MenuItem {
   label: string;
@@ -12,6 +13,21 @@ const options: MenuItem[] = [
   { label: '購物車', route: '/cart', icon: BsCart3, counter: true },
   { label: '會員', route: '/profile', icon: CgProfile, counter: false },
 ];
+
+function getTotalCartQty() {
+  const cartItems = localStorage.getItem('cartItems');
+  if (cartItems) {
+    const parsedItems = JSON.parse(cartItems);
+    const totalQty = parsedItems.reduce(
+      (acc: number, cur: LocalStorageItem) => {
+        acc += cur.qty;
+        return acc;
+      },
+      0
+    );
+    console.log(totalQty);
+  }
+}
 
 function Counter() {
   return (
@@ -26,6 +42,7 @@ function SplitLine() {
 }
 
 export default function MobileFooter() {
+  getTotalCartQty();
   return (
     <div className='xl:hidden w-full h-[60px] sticky bottom-0 bg-[#313538] text-white flex'>
       {options.map((option, index) => {

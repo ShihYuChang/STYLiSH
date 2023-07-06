@@ -48,9 +48,12 @@ export default function QtySelector() {
           <button
             onClick={() => updateQuantity('add')}
             className={`${
-              quantity === productQty && 'cursor-not-allowed text-[#ececec]'
+              (quantity === productQty || !selectedColor || !selectedSize) &&
+              'cursor-not-allowed text-[#ececec]'
             }`}
-            disabled={quantity === productQty}
+            disabled={
+              quantity === productQty || !selectedColor || !selectedSize
+            }
           >
             +
           </button>

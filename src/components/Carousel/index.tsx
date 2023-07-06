@@ -58,7 +58,7 @@ export default function Carousel() {
         >
           <Link
             key={`${img.product_id}`}
-            href={`/product?id=${img.product_id}`}
+            href={`/product?id=${banners[currentIndex].product_id}`}
           >
             <div
               className={`${

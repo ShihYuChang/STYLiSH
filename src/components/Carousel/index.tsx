@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Text from './Text';
 import { api } from '@/utils/api';
 import { useCarousel } from '@/hooks/useCarousel';
+import Link from 'next/link';
 
 interface Banner {
   id: number;
@@ -53,12 +54,20 @@ export default function Carousel() {
       {banners.map((img, index) => (
         <div
           key={`${img.product_id}`}
-          className={`${
-            index === currentIndex ? 'opacity-100' : 'opacity-0'
-          } w-full h-[38.5vw] xl:h-[500px] bg-banner1 absolute bg-cover bg-center transition-opacity ease-in duration-500`}
-          style={{ backgroundImage: `url(${img.picture})` }}
+          className={'w-full h-[38.5vw] xl:h-[500px] absolute'}
         >
-          <Text />
+          <Link
+            key={`${img.product_id}`}
+            href={`/product?id=${img.product_id}`}
+          >
+            <div
+              className={`${
+                index === currentIndex ? 'opacity-100' : 'opacity-0'
+              } w-full h-full bg-cover bg-center transition-opacity ease-in duration-500`}
+              style={{ backgroundImage: `url(${img.picture})` }}
+            />
+            <Text />
+          </Link>
           <Dots />
         </div>
       ))}

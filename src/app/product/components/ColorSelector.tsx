@@ -1,5 +1,5 @@
 import { ProductContext } from '@/context/ProductContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 export default function ColorSelector() {
   const { product, selectedColor, setSelectedColor } =
@@ -8,6 +8,11 @@ export default function ColorSelector() {
   function selectColor(color: string) {
     setSelectedColor(color);
   }
+
+  useEffect(() => {
+    setSelectedColor(null);
+  }, []);
+
   if (!product) return undefined;
   return (
     <div className='flex mb-[28px] items-center'>

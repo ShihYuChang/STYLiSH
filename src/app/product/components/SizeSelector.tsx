@@ -1,9 +1,14 @@
 import { ProductContext } from '@/context/ProductContext';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 export default function SizeSelector() {
-  const { product, colorSizeList, selectedColor } = useContext(ProductContext);
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const {
+    product,
+    colorSizeList,
+    selectedColor,
+    selectedSize,
+    setSelectedSize,
+  } = useContext(ProductContext);
 
   function selectSize(size: string) {
     setSelectedSize(size);

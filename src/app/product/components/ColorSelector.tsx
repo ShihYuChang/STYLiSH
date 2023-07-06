@@ -20,7 +20,7 @@ export default function ColorSelector({ product }: ProductProps) {
             className={`p-[6px] ${
               color.name === selectedColor
                 ? 'border border-solid border-black'
-                : null
+                : 'border-0'
             }`}
           >
             <button

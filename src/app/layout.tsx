@@ -1,7 +1,9 @@
 /* eslint-disable camelcase */
+'use client';
 import HomeContextProvider from '@/context/HomeContext';
 import ProductContextProvider from '@/context/ProductContext';
 import { Noto_Sans_TC } from 'next/font/google';
+import { useEffect } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MobileFooter from '../components/MobileFooter';
@@ -12,11 +14,23 @@ const noto_sans = Noto_Sans_TC({
   display: 'swap',
 });
 
+function checkLocalStorage() {
+  const emptyArr: [] = [];
+  const localStorageItems = localStorage.getItem('cartItems');
+  if (!localStorageItems) {
+    localStorage.setItem('cartItems', JSON.stringify(emptyArr));
+  }
+}
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    checkLocalStorage();
+  }, []);
+
   return (
     <html lang='en'>
       <head>

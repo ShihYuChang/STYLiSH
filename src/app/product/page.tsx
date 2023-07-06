@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { api } from '@/utils/api';
 import ColorSelector from './ColorSelector';
 import { ProductData } from '@/utils/types';
@@ -11,15 +12,17 @@ import Description from './Description';
 import Story from './Story';
 
 export default function Product() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id');
   const [product, setProduct] = useState<ProductData | null>(null);
 
   useEffect(() => {
-    async function getProductData() {
-      const { data } = await api.getProductInfo();
+    async function getProductData(id: string) {
+      const { data } = await api.getProductInfo(id);
       setProduct(data);
     }
 
-    getProductData();
+    id && getProductData(id);
   }, []);
 
   if (!product) return undefined;

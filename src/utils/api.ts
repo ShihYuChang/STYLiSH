@@ -22,9 +22,9 @@ export const api = {
     return response.json();
   },
 
-  async getProductInfo() {
+  async getProductInfo(id: string) {
     const response = await fetch(
-      'https://api.appworks-school.tw/api/1.0/products/details?id=201807201824'
+      `https://api.appworks-school.tw/api/1.0/products/details?id=${id}}`
     );
     return response.json();
   },

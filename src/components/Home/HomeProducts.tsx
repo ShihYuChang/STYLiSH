@@ -32,7 +32,7 @@ export default function HomeProducts() {
   }, [page]);
 
   if (products.length === 0) {
-    return;
+    return undefined;
   }
   return <Products products={products} />;
 }

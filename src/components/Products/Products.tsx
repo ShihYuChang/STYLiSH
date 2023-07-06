@@ -20,7 +20,7 @@ function getColorVariants(rawData: ProductInfo[]) {
 export default function Products({ products }: ComponentProps) {
   const colorVariants: Variants = getColorVariants(products);
   return (
-    <div className='grid grid-cols-2 px-[24px] xl:p-0 xl:grid-cols-3 w-[86.66%] xl:w-[1160px] mx-auto gap-y-[50px] leading-[14px] xl:leading-[24px] text-[12px] xl:text-[20px] tracking-[2.4px] xl:tracking-[4px] gap-x-[6px] xl:gap-0'>
+    <div className='grid grid-cols-2 px-[24px] xl:p-0 xl:grid-cols-3 w-[86.66%] xl:w-[1160px] mx-auto gap-y-[24px] xl:gap-y-[50px] leading-[14px] xl:leading-[24px] text-[12px] xl:text-[20px] tracking-[2.4px] xl:tracking-[4px] gap-x-[6px] xl:gap-0'>
       {products.map((product, index) => (
         <Link
           key={`${product}${index}`}
@@ -28,14 +28,14 @@ export default function Products({ products }: ComponentProps) {
           href={`/product?id=${product.id}`}
         >
           <img
-            className={`w-full xl:h-[480px] mb-[20px] bg-contain bg-center`}
+            className={`w-full xl:h-[480px] mb-[8px] xl:mb-[20px] bg-contain bg-center`}
             src={product.main_image}
           ></img>
-          <div className='flex gap-[10px] mb-[20px]'>
+          <div className='flex gap-[10px] mb-[10px] xl:mb-[20px]'>
             {product.colors.map((color, index) => (
               <div
                 key={`${color}${index}`}
-                className={`w-[24px] h-[24px] border border-solid border-[#d3d3d3]`}
+                className={`w-[1.2em] h-[1.2em] border border-solid border-[#d3d3d3]`}
                 style={{ backgroundColor: colorVariants[color.name] }}
               />
             ))}

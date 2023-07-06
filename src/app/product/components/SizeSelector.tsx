@@ -8,6 +8,7 @@ export default function SizeSelector() {
     selectedColor,
     selectedSize,
     setSelectedSize,
+    setQuantity,
   } = useContext(ProductContext);
 
   function selectSize(size: string) {
@@ -17,8 +18,13 @@ export default function SizeSelector() {
   useEffect(() => {
     if (selectedColor) {
       setSelectedSize(null);
+      setQuantity(0);
     }
   }, [selectedColor]);
+
+  useEffect(() => {
+    setQuantity(0);
+  }, [selectedSize]);
 
   if (!product) return undefined;
   return (

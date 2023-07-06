@@ -13,6 +13,8 @@ interface ContextProps {
   setSelectedColor: React.Dispatch<SetStateAction<string | null>>;
   selectedSize: null | string;
   setSelectedSize: React.Dispatch<SetStateAction<string | null>>;
+  quantity: number;
+  setQuantity: React.Dispatch<SetStateAction<number>>;
 }
 
 interface ProviderProps {
@@ -28,6 +30,8 @@ export const ProductContext = createContext<ContextProps>({
   setSelectedColor: () => {},
   selectedSize: null,
   setSelectedSize: () => {},
+  quantity: 0,
+  setQuantity: () => {},
 });
 
 export default function ProductContextProvider({ children }: ProviderProps) {
@@ -35,6 +39,7 @@ export default function ProductContextProvider({ children }: ProviderProps) {
   const [colorSizeList, setColorSizeList] = useState<ColorSizeList>({});
   const [selectedColor, setSelectedColor] = useState<null | string>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [quantity, setQuantity] = useState<number>(0);
 
   return (
     <ProductContext.Provider
@@ -47,6 +52,8 @@ export default function ProductContextProvider({ children }: ProviderProps) {
         setSelectedColor,
         selectedSize,
         setSelectedSize,
+        quantity,
+        setQuantity,
       }}
     >
       {children}

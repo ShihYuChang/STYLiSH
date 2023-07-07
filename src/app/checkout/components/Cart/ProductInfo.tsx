@@ -50,7 +50,9 @@ export default function ProductInfo({ item }: { item: LocalStorageItem }) {
         <div className='mb-[12px]'>顏色｜{item.color.name}</div>
         <div>尺寸｜{item.size}</div>
       </div>
-      <TrashIcon item={item} setCartItems={setCartItems} />
+      <div className='xl:hidden'>
+        <TrashIcon item={item} setCartItems={setCartItems} />
+      </div>
     </div>
   );
 }

@@ -23,9 +23,9 @@ function SplitLine() {
 export default function Cart() {
   const { cartItems } = useContext(CheckoutContext);
   return (
-    <div className='w-full flex flex-col gap-[20px]'>
+    <div className='w-full flex flex-col'>
       <div className='flex'>
-        <Title>
+        <Title noUnderLine>
           <div className='xl:mr-[490px]'>購物車</div>
           {options.map((option, index) => (
             <div
@@ -38,7 +38,10 @@ export default function Cart() {
         </Title>
       </div>
       {cartItems?.map((item, index) => (
-        <div key={`${item.id}${index}`} className='flex flex-col gap-[20px]'>
+        <div
+          key={`${item.id}${index}`}
+          className='flex flex-col xl:flex-row gap-[20px] xl:border border-solid border-[#979797] xl:px-[30px] xl:py-[40px]'
+        >
           <ProductInfo item={item} />
           <QtyAndPrice item={item} />
           {index !== cartItems.length - 1 && <SplitLine />}

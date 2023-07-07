@@ -18,7 +18,7 @@ export default function QtyAndPrice({ item }: { item: LocalStorageItem }) {
           className='w-full flex flex-col gap-[24px] items-center justify-center'
           key={`${option.value}${index}`}
         >
-          <div>{option.label}</div>
+          <div className='xl:hidden'>{option.label}</div>
           {option.selector ? (
             <QtySelector
               stock={item.stock}

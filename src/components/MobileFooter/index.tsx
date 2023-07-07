@@ -1,8 +1,8 @@
-import { BsCart3 } from 'react-icons/bs';
-import { CgProfile } from 'react-icons/cg';
-import { useContext } from 'react';
 import { ProductContext } from '@/context/ProductContext';
 import Link from 'next/link';
+import { useContext } from 'react';
+import { BsCart3 } from 'react-icons/bs';
+import { CgProfile } from 'react-icons/cg';
 
 interface MenuItem {
   label: string;
@@ -31,8 +31,8 @@ function SplitLine() {
 
 export default function MobileFooter() {
   return (
-    <Link href='/checkout'>
-      <div className='xl:hidden w-full h-[60px] sticky bottom-0 bg-[#313538] text-white flex'>
+    <Link href='/checkout' className='sticky bottom-0'>
+      <div className='xl:hidden w-full h-[60px] bg-[#313538] text-white flex'>
         {options.map((option, index) => {
           const IconComponent = option.icon;
           return (

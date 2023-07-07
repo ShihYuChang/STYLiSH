@@ -1,8 +1,7 @@
-import React from 'react';
-import Title from '../Title';
-import QtySelector from './QtySelector';
 import { LocalStorageItem } from '@/types/types';
 import { BsTrash3 } from 'react-icons/bs';
+import Title from '../Title';
+import QtySelector from './QtySelector';
 
 interface QtyAndPriceOption {
   label: string;
@@ -52,7 +51,7 @@ function QtyAndPrice({ item }: { item: LocalStorageItem }) {
         >
           <div>{option.label}</div>
           {option.selector ? (
-            <QtySelector stock={item[option.value]} />
+            <QtySelector stock={item.stock} item={item} />
           ) : (
             <div>TWD.{item[option.value]}</div>
           )}

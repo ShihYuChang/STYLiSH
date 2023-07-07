@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import { LocalStorageItem, OrderInfo } from '@/types/types';
 import QtySelector from './QtySelector';
-
-interface QtyAndPriceOption {
-  label: string;
-  value: 'qty' | 'price' | 'totalPrice';
-  selector?: boolean;
-}
+import { options } from '.';
 
 export default function QtyAndPrice({ item }: { item: LocalStorageItem }) {
   const initialOrderInfo: OrderInfo = {
@@ -15,11 +10,7 @@ export default function QtyAndPrice({ item }: { item: LocalStorageItem }) {
     totalPrice: item.totalPrice,
   };
   const [orderInfo, setOrderInfo] = useState<OrderInfo>(initialOrderInfo);
-  const options: QtyAndPriceOption[] = [
-    { label: '數量', value: 'qty', selector: true },
-    { label: '單價', value: 'price' },
-    { label: '小計', value: 'totalPrice' },
-  ];
+
   return (
     <div className='flex justify-between gap-[60px]'>
       {options.map((option, index) => (

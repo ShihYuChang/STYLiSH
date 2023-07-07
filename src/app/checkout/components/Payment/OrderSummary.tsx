@@ -1,3 +1,4 @@
+import { LocalStorageItem } from '@/types/types';
 import { useState } from 'react';
 
 interface OrderInfo {
@@ -5,26 +6,44 @@ interface OrderInfo {
   value: number;
 }
 
-const initialOrder: OrderInfo[] = [
-  {
-    label: '總金額',
-    value: 2397,
-  },
-  {
-    label: '運費',
-    value: 30,
-  },
-  {
-    label: '應付金額',
-    value: 2427,
-  },
-];
+const shippingFee = 30;
+
+function getInitOrderPrice() {
+  const cartItems = localStorage.getItem('cartItems');
+  if (cartItems) {
+    const parsedItems = JSON.parse(cartItems);
+    const totalPrice = parsedItems.reduce(
+      (acc: number, cur: LocalStorageItem) => {
+        acc += cur.totalPrice;
+        return acc;
+      },
+      0
+    );
+    const finalFee = totalPrice + shippingFee;
+    const newOrderInfo: OrderInfo[] = [
+      {
+        label: '總金額',
+        value: totalPrice,
+      },
+      { label: '運費', value: shippingFee },
+      {
+        label: '應付金額',
+        value: finalFee,
+      },
+    ];
+    return newOrderInfo;
+  }
+  return null;
+}
 
 export default function OrderSummary() {
-  const [orderInfo, setOrderInfo] = useState<OrderInfo[]>(initialOrder);
+  const [orderInfo, setOrderInfo] = useState<OrderInfo[] | null>(
+    getInitOrderPrice()
+  );
+
   return (
     <div className='w-full flex flex-col items-end gap-[20px]'>
-      {orderInfo.map((info, index) => (
+      {orderInfo?.map((info, index) => (
         <div
           key={index}
           className={`w-[50%] flex justify-between items-center ${

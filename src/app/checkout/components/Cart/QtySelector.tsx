@@ -1,5 +1,7 @@
 import { LocalStorageItem, OrderInfo } from '@/types/types';
 import { SetStateAction } from 'react';
+import { useContext } from 'react';
+import { CheckoutContext } from '../../context/CheckoutContext';
 
 interface SelectorProps {
   stock: number;
@@ -8,9 +10,17 @@ interface SelectorProps {
   setOrderInfo: React.Dispatch<SetStateAction<OrderInfo>>;
 }
 
+function updateCartItems(
+  newItems: LocalStorageItem[],
+  setCartItems: React.Dispatch<SetStateAction<LocalStorageItem[]>>
+) {
+  setCartItems(newItems);
+}
+
 function updateLocalStorage(
   e: React.ChangeEvent<HTMLSelectElement>,
-  item: LocalStorageItem
+  item: LocalStorageItem,
+  setCartItems: React.Dispatch<SetStateAction<LocalStorageItem[]>>
 ) {
   const cartItems = localStorage.getItem('cartItems');
   const newItem = { ...item };
@@ -24,6 +34,7 @@ function updateLocalStorage(
     newItem.totalPrice = newItem.price * newQty;
     parsedItems[itemIndex] = newItem;
     localStorage.setItem('cartItems', JSON.stringify(parsedItems));
+    updateCartItems(parsedItems, setCartItems);
   }
 }
 
@@ -44,6 +55,7 @@ export default function QtySelector({
   orderInfo,
   setOrderInfo,
 }: SelectorProps) {
+  const { setCartItems } = useContext(CheckoutContext);
   const availableQty = [];
   for (let i = 1; i <= stock; i++) {
     availableQty.push(i);
@@ -53,7 +65,7 @@ export default function QtySelector({
     e: React.ChangeEvent<HTMLSelectElement>,
     item: LocalStorageItem
   ) {
-    updateLocalStorage(e, item);
+    updateLocalStorage(e, item, setCartItems);
     updateQtyAndTotalPrice(orderInfo, setOrderInfo, Number(e.target.value));
   }
 

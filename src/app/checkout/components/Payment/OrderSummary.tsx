@@ -1,5 +1,6 @@
 import { LocalStorageItem } from '@/types/types';
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import { CheckoutContext } from '../../context/CheckoutContext';
 
 interface OrderInfo {
   label: string;
@@ -8,38 +9,34 @@ interface OrderInfo {
 
 const shippingFee = 30;
 
-function getInitOrderPrice() {
-  const cartItems = localStorage.getItem('cartItems');
-  if (cartItems) {
-    const parsedItems = JSON.parse(cartItems);
-    const totalPrice = parsedItems.reduce(
-      (acc: number, cur: LocalStorageItem) => {
-        acc += cur.totalPrice;
-        return acc;
-      },
-      0
-    );
-    const finalFee = totalPrice + shippingFee;
-    const newOrderInfo: OrderInfo[] = [
-      {
-        label: '總金額',
-        value: totalPrice,
-      },
-      { label: '運費', value: shippingFee },
-      {
-        label: '應付金額',
-        value: finalFee,
-      },
-    ];
-    return newOrderInfo;
-  }
-  return null;
+function getOrderInfo(cartItems: LocalStorageItem[]) {
+  const totalPrice = cartItems.reduce((acc: number, cur: LocalStorageItem) => {
+    acc += cur.totalPrice;
+    return acc;
+  }, 0);
+  const finalFee = totalPrice + shippingFee;
+  const newOrderInfo: OrderInfo[] = [
+    {
+      label: '總金額',
+      value: totalPrice,
+    },
+    { label: '運費', value: shippingFee },
+    {
+      label: '應付金額',
+      value: finalFee,
+    },
+  ];
+  return newOrderInfo;
 }
 
 export default function OrderSummary() {
-  const [orderInfo, setOrderInfo] = useState<OrderInfo[] | null>(
-    getInitOrderPrice()
-  );
+  const { cartItems } = useContext(CheckoutContext);
+  const [orderInfo, setOrderInfo] = useState<OrderInfo[] | null>(null);
+
+  useEffect(() => {
+    const newOrderInfo = getOrderInfo(cartItems);
+    setOrderInfo(newOrderInfo);
+  }, [cartItems]);
 
   return (
     <div className='w-full flex flex-col items-end gap-[20px]'>

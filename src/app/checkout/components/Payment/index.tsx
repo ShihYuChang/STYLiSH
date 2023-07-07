@@ -1,10 +1,9 @@
-import React from 'react';
-import Title from '../Title';
+import CardInfo from './CardInfo';
 
 export default function Payment() {
   return (
-    <div>
-      <Title>付款資料</Title>
+    <div className='flex flex-col gap-[20px]'>
+      <CardInfo />
     </div>
   );
 }

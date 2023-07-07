@@ -79,9 +79,10 @@ export interface LocalStorageItem {
   stock: number;
 }
 
-export interface ShippingInfoQuestion {
+export interface CheckoutQuestion {
   label: string;
   value: string;
   desciprtion?: string;
   options?: string[];
+  placehoder?: string;
 }

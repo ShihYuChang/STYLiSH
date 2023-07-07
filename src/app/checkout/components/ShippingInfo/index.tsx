@@ -1,10 +1,9 @@
-import React from 'react';
+import { CheckoutQuestion } from '@/types/types';
+import Question from '../Question';
 import Title from '../Title';
-import Question from './Question';
-import { ShippingInfoQuestion } from '@/types/types';
 
 export default function ShippingInfo() {
-  const questions: ShippingInfoQuestion[] = [
+  const questions: CheckoutQuestion[] = [
     {
       label: '收件人姓名',
       value: 'name',

@@ -43,7 +43,7 @@ export default function OrderSummary() {
       {orderInfo?.map((info, index) => (
         <div
           key={index}
-          className={`w-[50%] flex justify-between items-center ${
+          className={`w-[50%] xl:w-[240px] flex justify-between items-center ${
             index === orderInfo.length - 2 &&
             'border-b border-solid border-[#3f3a3a] pb-[20px]'
           }`}
@@ -55,7 +55,7 @@ export default function OrderSummary() {
           </div>
         </div>
       ))}
-      <button className='w-full h-[44px] bg-black text-white tracking-[3.2px]'>
+      <button className='w-full xl:w-[240px] h-[44px] xl:h-[64px] bg-black text-white tracking-[3.2px] xl:mt-[30px]'>
         確認付款
       </button>
     </div>

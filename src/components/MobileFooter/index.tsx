@@ -2,6 +2,7 @@ import { BsCart3 } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
 import { useContext } from 'react';
 import { ProductContext } from '@/context/ProductContext';
+import Link from 'next/link';
 
 interface MenuItem {
   label: string;
@@ -30,22 +31,24 @@ function SplitLine() {
 
 export default function MobileFooter() {
   return (
-    <div className='xl:hidden w-full h-[60px] sticky bottom-0 bg-[#313538] text-white flex'>
-      {options.map((option, index) => {
-        const IconComponent = option.icon;
-        return (
-          <div key={index} className='w-full flex items-center'>
-            <div className='w-full flex items-center justify-center cursor-pointer'>
-              <div className='w-[44px] text-[30px] text-white flex justify-center relative'>
-                <IconComponent />
-                {option.counter && <Counter />}
+    <Link href='/checkout'>
+      <div className='xl:hidden w-full h-[60px] sticky bottom-0 bg-[#313538] text-white flex'>
+        {options.map((option, index) => {
+          const IconComponent = option.icon;
+          return (
+            <div key={index} className='w-full flex items-center'>
+              <div className='w-full flex items-center justify-center cursor-pointer'>
+                <div className='w-[44px] text-[30px] text-white flex justify-center relative'>
+                  <IconComponent />
+                  {option.counter && <Counter />}
+                </div>
+                {option.label}
               </div>
-              {option.label}
+              {index !== options.length - 1 && <SplitLine />}
             </div>
-            {index !== options.length - 1 && <SplitLine />}
-          </div>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
+    </Link>
   );
 }

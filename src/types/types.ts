@@ -86,3 +86,9 @@ export interface CheckoutQuestion {
   options?: string[];
   placehoder?: string;
 }
+
+export interface OrderInfo {
+  qty: number;
+  price: number;
+  totalPrice: number;
+}

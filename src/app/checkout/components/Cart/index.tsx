@@ -1,4 +1,5 @@
-import { LocalStorageItem } from '@/types/types';
+import { LocalStorageItem, OrderInfo } from '@/types/types';
+import { useState } from 'react';
 import { BsTrash3 } from 'react-icons/bs';
 import Title from '../Title';
 import QtySelector from './QtySelector';
@@ -37,6 +38,12 @@ function ProductInfo({ item }: { item: LocalStorageItem }) {
 }
 
 function QtyAndPrice({ item }: { item: LocalStorageItem }) {
+  const initialOrderInfo: OrderInfo = {
+    qty: item.qty,
+    price: item.price,
+    totalPrice: item.totalPrice,
+  };
+  const [orderInfo, setOrderInfo] = useState<OrderInfo>(initialOrderInfo);
   const options: QtyAndPriceOption[] = [
     { label: '數量', value: 'qty', selector: true },
     { label: '單價', value: 'price' },
@@ -51,9 +58,14 @@ function QtyAndPrice({ item }: { item: LocalStorageItem }) {
         >
           <div>{option.label}</div>
           {option.selector ? (
-            <QtySelector stock={item.stock} item={item} />
+            <QtySelector
+              stock={item.stock}
+              item={item}
+              orderInfo={orderInfo}
+              setOrderInfo={setOrderInfo}
+            />
           ) : (
-            <div>TWD.{item[option.value]}</div>
+            <div>TWD.{orderInfo[option.value]}</div>
           )}
         </div>
       ))}

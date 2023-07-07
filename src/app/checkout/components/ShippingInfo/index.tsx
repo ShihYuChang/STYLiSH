@@ -28,8 +28,11 @@ export default function ShippingInfo() {
     },
   ];
   return (
-    <div className='flex flex-col gap-[30px]'>
-      <Title>訂購資料</Title>
+    <div className='flex flex-col gap-[20px]'>
+      <div>
+        <Title>訂購資料</Title>
+        <hr className='w-full border-black' />
+      </div>
       {questions.map((question, index) => (
         <div key={index}>
           <Question

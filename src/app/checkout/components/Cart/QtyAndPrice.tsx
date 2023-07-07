@@ -12,7 +12,7 @@ export default function QtyAndPrice({ item }: { item: LocalStorageItem }) {
   const [orderInfo, setOrderInfo] = useState<OrderInfo>(initialOrderInfo);
 
   return (
-    <div className='flex justify-between gap-[60px]'>
+    <div className='flex justify-between gap-[60px] xl:gap-0'>
       {options.map((option, index) => (
         <div
           className='w-full flex flex-col gap-[24px] items-center justify-center'
@@ -27,7 +27,9 @@ export default function QtyAndPrice({ item }: { item: LocalStorageItem }) {
               setOrderInfo={setOrderInfo}
             />
           ) : (
-            <div>TWD.{orderInfo[option.value]}</div>
+            <div className='xl:w-[192px] xl:text-center'>
+              TWD.{orderInfo[option.value]}
+            </div>
           )}
         </div>
       ))}

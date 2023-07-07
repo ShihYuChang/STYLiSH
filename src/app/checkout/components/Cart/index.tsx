@@ -25,7 +25,7 @@ export default function Cart() {
   return (
     <div className='w-full flex flex-col'>
       <div className='flex'>
-        <Title noUnderLine>
+        <Title>
           <div className='xl:mr-[490px]'>購物車</div>
           {options.map((option, index) => (
             <div
@@ -37,16 +37,21 @@ export default function Cart() {
           ))}
         </Title>
       </div>
-      {cartItems?.map((item, index) => (
-        <div
-          key={`${item.id}${index}`}
-          className='flex flex-col xl:flex-row gap-[20px] xl:border border-solid border-[#979797] xl:px-[30px] xl:py-[40px]'
-        >
-          <ProductInfo item={item} />
-          <QtyAndPrice item={item} />
-          {index !== cartItems.length - 1 && <SplitLine />}
-        </div>
-      ))}
+      <hr className='w-full border-black mb-[20px] xl:hidden' />
+      <div className='xl:border xl:border-solid xl:border-[#979797] xl:px-[30px] xl:py-[40px] xl:flex flex-col gap-[30px]'>
+        {cartItems?.map((item, index) => (
+          <div
+            key={`${item.id}${index}`}
+            className='flex flex-col xl:flex-row gap-[20px] xl:gap-0 mb-[20px] xl:mb-0'
+          >
+            <ProductInfo item={item} />
+            <QtyAndPrice item={item} />
+            <div className='xl:hidden'>
+              {index !== cartItems.length - 1 && <SplitLine />}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

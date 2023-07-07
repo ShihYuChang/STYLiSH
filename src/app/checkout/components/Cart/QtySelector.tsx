@@ -71,7 +71,7 @@ export default function QtySelector({
 
   return (
     <select
-      className='w-full bg-[#f3f3f3] border boder-solid border-[#949494] rounded-[8px] text-center outline-none'
+      className='w-full xl:w-[80px] xl:h-[32px] xl:mr-[56px] bg-[#f3f3f3] border boder-solid border-[#949494] rounded-[8px] text-center outline-none'
       onChange={(e) => handleQtyChange(e, item)}
       defaultValue={item.qty}
     >

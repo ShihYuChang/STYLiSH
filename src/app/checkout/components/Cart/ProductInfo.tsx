@@ -42,7 +42,7 @@ function deleteItem(
 export default function ProductInfo({ item }: { item: LocalStorageItem }) {
   const { setCartItems } = useContext(CheckoutContext);
   return (
-    <div className='flex justify-between'>
+    <div className='flex justify-between xl:w-[484px]'>
       <img src={item.img} className='w-[114px] mr-[10px]' />
       <div className='text-[14px] leading-[17px] flex-grow'>
         <div className='text-black mb-[20px]'>{item.title}</div>

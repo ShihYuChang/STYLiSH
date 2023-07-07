@@ -22,7 +22,10 @@ export default function CardInfo() {
   ];
   return (
     <div className='flex flex-col gap-[20px]'>
-      <Title>付款資料</Title>
+      <div>
+        <Title>付款資料</Title>
+        <hr className='w-full border-black' />
+      </div>
       {questions.map((question, index) => (
         <Question
           key={index}

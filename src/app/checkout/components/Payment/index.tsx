@@ -15,7 +15,7 @@ export default function Payment() {
   }, []);
 
   return (
-    <div className='flex flex-col gap-[24px]'>
+    <div className='flex flex-col gap-[24px] xl:gap-[40px]'>
       <CardInfo />
       <OrderSummary />
     </div>

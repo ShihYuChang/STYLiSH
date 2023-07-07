@@ -1,17 +1,15 @@
-import { LocalStorageItem } from '@/types/types';
 import Title from '../Title';
 import ProductInfo from './ProductInfo';
 import QtyAndPrice from './QtyAndPrice';
+import { useContext } from 'react';
+import { CheckoutContext } from '../../context/CheckoutContext';
 
 function SplitLine() {
   return <hr className='w-full border-black' />;
 }
 
-export default function Cart({
-  cartItems,
-}: {
-  cartItems: LocalStorageItem[] | null;
-}) {
+export default function Cart() {
+  const { cartItems } = useContext(CheckoutContext);
   return (
     <div className='w-full flex flex-col gap-[20px]'>
       <Title>購物車</Title>

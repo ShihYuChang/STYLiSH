@@ -1,5 +1,5 @@
 import React from 'react';
-import Title from './Title';
+import Title from '../Title';
 import QtySelector from './QtySelector';
 import { LocalStorageItem } from '@/types/types';
 import { BsTrash3 } from 'react-icons/bs';
@@ -74,7 +74,7 @@ export default function Cart({
         <div key={index} className='flex flex-col gap-[20px]'>
           <ProductInfo item={item} />
           <QtyAndPrice item={item} />
-          <SplitLine />
+          {index !== cartItems.length - 1 && <SplitLine />}
         </div>
       ))}
     </div>

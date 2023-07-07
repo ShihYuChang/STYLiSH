@@ -78,3 +78,10 @@ export interface LocalStorageItem {
   totalPrice: number;
   stock: number;
 }
+
+export interface ShippingInfoQuestion {
+  label: string;
+  value: string;
+  desciprtion?: string;
+  options?: string[];
+}

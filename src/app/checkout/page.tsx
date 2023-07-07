@@ -8,7 +8,7 @@ import CheckoutContextProvider from './context/CheckoutContext';
 export default function Checkout() {
   return (
     <CheckoutContextProvider>
-      <div className='w-full px-[24px] mt-[20px] mb-[28px] flex flex-col gap-[20px]'>
+      <div className='w-full xl:w-[1160px] xl:mx-[auto] px-[24px] xl:px-0 mt-[20px] xl:mt-[51px] mb-[28px] flex flex-col gap-[20px]'>
         <Cart />
         <ShippingInfo />
         <Payment />

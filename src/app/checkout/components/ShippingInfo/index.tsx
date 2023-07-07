@@ -38,7 +38,7 @@ export default function ShippingInfo() {
             value={question.value}
             desciprtion={question.desciprtion}
             options={question.options}
-          ></Question>
+          />
         </div>
       ))}
     </div>

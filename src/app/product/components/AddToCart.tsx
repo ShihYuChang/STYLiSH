@@ -36,7 +36,7 @@ export default function AddToCart() {
 
   function addToLocalStorage(product: ProductData) {
     const currentItems = localStorage.getItem('cartItems');
-    const productStock: ProductVariants =
+    const productStock: ProductVariants | undefined | null =
       selectedColor &&
       product.variants.find(
         (item) =>
@@ -53,7 +53,7 @@ export default function AddToCart() {
         qty: quantity,
         size: selectedSize,
         totalPrice: product.price * quantity,
-        stock: productStock.stock,
+        stock: Number(productStock.stock),
       };
 
       parsedItems.push(itemDetails);

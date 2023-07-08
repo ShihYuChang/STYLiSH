@@ -5,7 +5,7 @@ export interface Variants {
 export interface ProductVariants {
   color_code: string;
   size: string;
-  stock: number;
+  stock: number | string;
 }
 
 export interface ProductColors {

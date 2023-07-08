@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export function useCarousel(data: any[]) {
+export function useCarousel(data: unknown[]) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isHover, setIsHover] = useState(false);
 

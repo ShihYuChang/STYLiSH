@@ -16,9 +16,11 @@ export default function HomeProducts() {
 
   useEffect(() => {
     async function renderProducts() {
+      // eslint-disable-next-line camelcase
       const { data, next_paging } = await api.getProductData(page, category);
       const newProducts = [...products, ...data];
       setProducts(newProducts);
+      // eslint-disable-next-line camelcase
       if (next_paging) {
         setHasNextPage(true);
         setHasLoadData(false);

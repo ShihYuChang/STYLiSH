@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 'use client';
 import Carousel from '@/components/Carousel';
 import Products from '@/components/Products/Products';
@@ -14,9 +13,11 @@ export default function Search({ params }: { params: { slug: string } }) {
 
   useEffect(() => {
     async function renderProducts() {
+      // eslint-disable-next-line camelcase
       const { data, next_paging } = await api.searchProduct(slug, 0);
       const newProducts = [...products, ...data];
       setProducts(newProducts);
+      // eslint-disable-next-line camelcase
       if (next_paging) {
         setHasNextPage(true);
         setHasLoadData(false);

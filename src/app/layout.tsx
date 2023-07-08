@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 'use client';
-import HomeContextProvider from '@/context/HomeContext';
 import ProductContextProvider from '@/context/ProductContext';
 import { Noto_Sans_TC } from 'next/font/google';
 import { useEffect } from 'react';
@@ -37,16 +36,14 @@ export default function RootLayout({
         <title>STYLiSH</title>
       </head>
       <body className={`${noto_sans.className} text-custom-grey`}>
-        <HomeContextProvider>
-          <ProductContextProvider>
-            <div className='min-h-screen flex flex-col'>
-              <Header />
-              <div className='grow'>{children}</div>
-              <Footer />
-              <MobileFooter />
-            </div>
-          </ProductContextProvider>
-        </HomeContextProvider>
+        <ProductContextProvider>
+          <div className='min-h-screen flex flex-col'>
+            <Header />
+            <div className='grow'>{children}</div>
+            <Footer />
+            <MobileFooter />
+          </div>
+        </ProductContextProvider>
       </body>
     </html>
   );

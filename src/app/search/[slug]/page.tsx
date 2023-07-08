@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 'use client';
 import Carousel from '@/components/Carousel';
 import Products from '@/components/Products/Products';

@@ -7,9 +7,8 @@ interface OrderInfo {
   value: number;
 }
 
-const shippingFee = 30;
-
 function getOrderInfo(cartItems: LocalStorageItem[]) {
+  const shippingFee = cartItems.length > 0 ? 30 : 0;
   const totalPrice = cartItems.reduce((acc: number, cur: LocalStorageItem) => {
     acc += cur.totalPrice;
     return acc;

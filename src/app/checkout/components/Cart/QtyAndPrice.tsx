@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { LocalStorageItem, OrderInfo } from '@/types/types';
 import QtySelector from './QtySelector';
-import { options } from '.';
+import { options } from './Header';
 
 export default function QtyAndPrice({ item }: { item: LocalStorageItem }) {
   const initialOrderInfo: OrderInfo = {

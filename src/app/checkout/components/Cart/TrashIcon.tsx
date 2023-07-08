@@ -1,6 +1,7 @@
-import React, { SetStateAction } from 'react';
+import React, { SetStateAction, useContext } from 'react';
 import { LocalStorageItem } from '@/types/types';
 import { BsTrash3 } from 'react-icons/bs';
+import { CheckoutContext } from '../../context/CheckoutContext';
 
 function deleteItem(
   item: LocalStorageItem,
@@ -21,16 +22,11 @@ function deleteItem(
   }
 }
 
-export default function TrashIcon({
-  item,
-  setCartItems,
-}: {
-  item: LocalStorageItem;
-  setCartItems: React.Dispatch<SetStateAction<LocalStorageItem[]>>;
-}) {
+export default function TrashIcon({ item }: { item: LocalStorageItem }) {
+  const { setCartItems } = useContext(CheckoutContext);
   return (
     <div
-      className='text-[24px] leading-[44px] text-center text-[#cccccc] cursor-pointer mr-[20px]'
+      className='text-[24px] leading-[44px] flex justify-center items-center text-[#cccccc] cursor-pointer mr-[20px]'
       onClick={() => deleteItem(item, setCartItems)}
     >
       <BsTrash3 />

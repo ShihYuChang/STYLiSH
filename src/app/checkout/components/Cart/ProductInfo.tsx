@@ -1,10 +1,7 @@
-import { useContext } from 'react';
 import { LocalStorageItem } from '@/types/types';
-import { CheckoutContext } from '../../context/CheckoutContext';
 import TrashIcon from './TrashIcon';
 
 export default function ProductInfo({ item }: { item: LocalStorageItem }) {
-  const { setCartItems } = useContext(CheckoutContext);
   return (
     <div className='flex justify-between xl:w-[484px]'>
       <img src={item.img} className='w-[114px] mr-[10px]' />
@@ -15,7 +12,7 @@ export default function ProductInfo({ item }: { item: LocalStorageItem }) {
         <div>尺寸｜{item.size}</div>
       </div>
       <div className='xl:hidden'>
-        <TrashIcon item={item} setCartItems={setCartItems} />
+        <TrashIcon item={item} />
       </div>
     </div>
   );

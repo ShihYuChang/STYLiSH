@@ -3,6 +3,7 @@ import QtyAndPrice from './QtyAndPrice';
 import { useContext } from 'react';
 import { CheckoutContext } from '../../context/CheckoutContext';
 import Header from './Header';
+import TrashIcon from './TrashIcon';
 
 function SplitLine() {
   return <hr className='w-full border-black' />;
@@ -21,6 +22,9 @@ export default function Cart() {
           >
             <ProductInfo item={item} />
             <QtyAndPrice item={item} />
+            <div className='hidden xl:flex'>
+              <TrashIcon item={item} />
+            </div>
             <div className='xl:hidden'>
               {index !== cartItems.length - 1 && <SplitLine />}
             </div>

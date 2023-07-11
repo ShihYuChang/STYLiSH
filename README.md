@@ -3,7 +3,7 @@
 
 
 A end-to-end e-commerce platform.<br />
-[Website](stylish-blush.vercel.app)
+[Website](https://stylish-blush.vercel.app/)
 
 
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)

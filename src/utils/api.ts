@@ -28,4 +28,22 @@ export const api = {
     );
     return response.json();
   },
+
+  async signIn(email: string, password: string) {
+    const response = await fetch(
+      'https://api.appworks-school.tw/api/1.0/user/signin',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          provider: 'native',
+          email,
+          password,
+        }),
+      }
+    );
+    return response.json();
+  },
 };

@@ -1,5 +1,5 @@
 'use client';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { api } from '@/utils/api';
 import { Context } from '../context/Context';
 
@@ -7,9 +7,18 @@ export default function LoginBtn() {
   const { signIn } = api;
   const { userInput } = useContext(Context);
 
+  useEffect(() => {
+    const jwt = localStorage.getItem('a_t');
+    if (jwt) {
+      window.location.href = '/';
+    }
+  }, []);
+
   async function handleSignIn() {
-    const response = await signIn(userInput.userName, userInput.password);
-    console.log(response);
+    const response = await signIn(userInput.email, userInput.password);
+    const jwt = await response.data.access_token;
+    localStorage.setItem('a_t', jwt);
+    window.location.href = '/';
   }
 
   return (

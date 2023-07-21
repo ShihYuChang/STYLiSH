@@ -14,7 +14,7 @@ interface ContextProps {
 
 export const Context = createContext<ContextProps>({
   userInput: {
-    userName: '',
+    email: '',
     password: '',
   },
   setUserInput: () => {},
@@ -26,7 +26,7 @@ export default function ContextProvider({
   children: React.ReactNode;
 }) {
   const [userInput, setUserInput] = useState<UserInput>({
-    userName: '',
+    email: '',
     password: '',
   });
   return (

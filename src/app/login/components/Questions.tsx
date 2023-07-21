@@ -5,11 +5,12 @@ import { Context } from '../context/Context';
 interface Question {
   label: string;
   value: string;
+  type: string;
 }
 
 const questions: Question[] = [
-  { label: '帳號', value: 'userName' },
-  { label: '密碼', value: 'password' },
+  { label: 'Email', value: 'email', type: 'email' },
+  { label: '密碼', value: 'password', type: 'password' },
 ];
 
 export default function Questions() {
@@ -33,6 +34,7 @@ export default function Questions() {
           </div>
           <input
             className='w-full xl:w-[576px] h-[32px] border border-solid border-[#979797] rounded-[8px] px-[10px] text-[14px]'
+            type={question.type}
             value={userInput[question.value]}
             onChange={(e) => handleInput(e, question.value)}
           />
